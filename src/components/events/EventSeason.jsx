@@ -47,6 +47,7 @@ export default function EventSeason({ season, monthsData, seasonColor, descripti
                     title={event.title}
                     date={event.date}
                     isDisabled={event.isDisabled}
+                    colSpan={event.colSpan}
                   />
                 ))}
               </div>
