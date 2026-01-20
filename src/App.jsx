@@ -1,9 +1,13 @@
-function App() {
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import ColorTest from "./components/common/ColorTest"
 
+function App() {
   return (
-    <>
-      <h1 className="text-red-300">Vite + React</h1>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/color-test" element={<ColorTest />} />
+      </Routes>
+    </Router>
   )
 }
 
