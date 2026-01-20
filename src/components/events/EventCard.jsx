@@ -1,12 +1,26 @@
-export default function EventCard({ title, date, isDisabled = false }) {
-  // 날짜에 숫자가 포함되어 있는지 확인 (예: '3월 10일' -> true, '추후 공지' -> false)
+export default function EventCard({ title, date, isDisabled = false, colSpan = 1 }) {
   const hasDateNumber = /\d/.test(date);
-
-  // 보더를 보여줄 조건: 비활성화 상태가 아니고(AND) 날짜 형식(숫자 포함)일 때
   const showBorder = !isDisabled && hasDateNumber;
 
+  // colSpan 값에 따른 Tailwind 클래스 매핑
+  const getColSpanClass = (span) => {
+    switch (span) {
+      case 4:
+        // 모바일(1) -> 태블릿(2) -> 작은PC(3) -> 큰PC(4) 순으로 그리드가 커지므로
+        // 각 브레이크포인트에서 최대 너비를 차지하도록 설정
+        return 'col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4';
+      case 3:
+        // 4열 그리드일 때 3칸 차지
+        return 'lg:col-span-3';
+      case 2:
+        return 'sm:col-span-2';
+      default:
+        return 'col-span-1';
+    }
+  };
+
   return (
-    <div className="flex flex-col gap-2">
+    <div className={`flex flex-col gap-2 ${getColSpanClass(colSpan)}`}>
       {/* 제목 부분 */}
       <div
         className={`
@@ -35,7 +49,7 @@ export default function EventCard({ title, date, isDisabled = false }) {
           }
         `}
       >
-        <div className={hasDateNumber ? "body-18-bold" : "body-18-regular text-gray-04 opacity-60"}>
+        <div className={hasDateNumber ? "body-18-bold" : "body-18-regular"}>
           {date}
         </div>
       </div>

@@ -33,7 +33,7 @@ export default function Events() {
     {
       month: '6월',
       events: [
-        { title: '휴회', date: '기말고사 기간 + 해커톤 준비', isDisabled: true },
+        { title: '휴회', date: '기말고사 기간 + 해커톤 준비', isDisabled: true, colSpan: 4},
       ],
     },
   ];
@@ -44,7 +44,7 @@ export default function Events() {
       month: '7월',
       events: [
         { title: '애거돈', date: '추후 공지', isDisabled: false },
-        { title: '방학 세션 진행', date: '추후 공지', isDisabled: false },
+        { title: '방학 세션 진행', date: '추후 공지', isDisabled: false, colSpan: 3 },
       ],
     },
     {
@@ -64,7 +64,7 @@ export default function Events() {
     {
       month: '10월',
       events: [
-        { title: '데모데이 준비 및 점검', date: '팀별 개별 미팅', isDisabled: false },
+        { title: '데모데이 준비 및 점검', date: '팀별 개별 미팅', isDisabled: false, colSpan: 4 },
       ],
     },
     {
