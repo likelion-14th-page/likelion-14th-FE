@@ -64,4 +64,25 @@
     font-weight: 600;
     line-height: 130%; /* 41.6px */
   }
+  .navbar_title {
+    color: var(--Gray-white, #fff);
+
+    /* Title/20_Semibold */
+    font-family: 'Pretendard';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 26px */
+  }
+  .navbar_experience {
+    color: var(--Gray-01, #ededed);
+    text-align: center;
+
+    /* Title/20_Semibold */
+    font-family: 'Pretendard';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 26px */
+  }
 }

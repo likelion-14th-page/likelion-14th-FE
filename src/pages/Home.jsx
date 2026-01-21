@@ -1,9 +1,11 @@
 import lion from '../assets/home/logo-lion.svg';
 import hongik from '../assets/home/logo-hongik.svg';
+import Navbar from '../layout/NavBar';
 
 const Home = () => {
   return (
     <>
+      <Navbar />
       <div className="relative w-full h-screen overflow-hidden bg-bg-dark">
         <div
           alt="텍스트"
