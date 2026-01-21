@@ -1,6 +1,7 @@
 import lion from '../assets/home/logo-lion.svg';
 import hongik from '../assets/home/logo-hongik.svg';
 import Navbar from '../layout/NavBar';
+import ButtonApply from '../layout/ButtonApply';
 
 const Home = () => {
   return (
@@ -19,10 +20,10 @@ const Home = () => {
             <div className="hongik">홍익대학교</div>
           </div>
           <div className="likelion">멋쟁이 사자처럼</div>
-          <div className="flex justify-start experience mt-[16px] mb-[96px]">
+          <div className="flex justify-start explanation mt-[16px] mb-[96px]">
             국내 최대 규모의 IT 창업 연합 동아리
           </div>
-          <button>지원하기</button>
+          <ButtonApply type="long" />
         </div>
         <img
           src={lion}

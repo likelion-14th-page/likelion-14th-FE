@@ -53,7 +53,7 @@
     font-weight: 700;
     line-height: 130%; /* 62.4px */
   }
-  .experience {
+  .explanation {
     color: var(--Gray-02, #d9d9d9);
     text-align: center;
 
@@ -74,7 +74,7 @@
     font-weight: 600;
     line-height: 130%; /* 26px */
   }
-  .navbar_experience {
+  .navbar_explanation {
     color: var(--Gray-01, #ededed);
     text-align: center;
 
@@ -84,5 +84,33 @@
     font-style: normal;
     font-weight: 600;
     line-height: 130%; /* 26px */
+  }
+
+  .button_layout {
+    border-radius: 100px;
+    border: 1.5px solid var(--or-orange-02, #804229);
+    background: var(--or-orange-01, #6c2d14);
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .button_layout:hover {
+    border-radius: 100px;
+    border: 1.5px solid var(--or-orange-02, #804229);
+    background: var(--or-orange-01-hover, #531e08);
+  }
+
+  .button_text {
+    color: var(--Gray-white, #fff);
+    text-align: center;
+
+    /* Body/18_Semibold */
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 27px */
   }
 }

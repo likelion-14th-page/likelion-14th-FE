@@ -1,3 +1,5 @@
+import ButtonApply from './ButtonApply';
+
 const Navbar = () => {
   return (
     <>
@@ -8,20 +10,25 @@ const Navbar = () => {
         <div className="px-[32px] py-[16px] cursor-pointer navbar_title hover:text-gray-02">
           LIKE LION HONGIK
         </div>
-        <div className="flex justify-center items-center navbar_experience">
-          <div className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
-            모집 안내
+        <div
+          alt="nav bar explanation "
+          className="flex justify-between items-center "
+        >
+          <div className="navbar_explanation justify-center items-center flex">
+            <div className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
+              모집 안내
+            </div>
+            <div className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
+              지난 활동
+            </div>
+            <div className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
+              행사 일정
+            </div>
+            <div className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
+              FAQ
+            </div>
           </div>
-          <div className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
-            지난 활동
-          </div>
-          <div className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
-            행사 일정
-          </div>
-          <div className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
-            FAQ
-          </div>
-          <button>지원하기</button>
+          <ButtonApply type="short" className={'mx-[28px]'} />
         </div>
       </div>
     </>
