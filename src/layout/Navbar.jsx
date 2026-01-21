@@ -20,10 +20,14 @@ const Navbar = () => {
           className="flex justify-between items-center "
         >
           <div className="navbar_explanation justify-center items-center flex">
-            <div className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
+            <div 
+              onClick={() => navigate('/recruiting')}
+              className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
               모집 안내
             </div>
-            <div className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
+            <div 
+              onClick={() => navigate('/archaive')}
+              className="px-[24px] py-[16px] cursor-pointer hover:bg-[radial-gradient(50%_50%_at_50%_50%,#BA4E23_0%,#080300_100%)]">
               지난 활동
             </div>
             <div 

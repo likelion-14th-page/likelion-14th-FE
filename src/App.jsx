@@ -3,6 +3,8 @@ import Layout from "./layout/Layout";
 import ColorTest from "./components/common/ColorTest";
 import Home from './pages/Home';
 import Events from "./pages/Events";
+import Archaive from "./pages/Archaive";
+import Recruiting from "./pages/Recruiting";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/color-test" element={<ColorTest />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/archaive" element={<Archaive />} />
+          <Route path="/recruiting" element={<Recruiting />} />
         </Route>
 
         {/* 2. 레이아웃이 필요 없는 페이지 (그룹 밖으로 뺌) */}

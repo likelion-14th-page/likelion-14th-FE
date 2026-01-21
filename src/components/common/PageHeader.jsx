@@ -4,12 +4,12 @@ const PageHeader = ({ title, subtitle, description }) => {
     <section className="py-16 w-full border-b border-gray-07 px-[150px]">
       
       {/* 소제목 (예: 행사 일정) */}
-      <p className="body-16-semibold text-orange-04 mb-4">
+      <p className="body-16-semibold text-orange-04">
         {subtitle}
       </p>
 
       {/* 대제목과 설명글을 가로로 배치하고 아래쪽 라인을 맞춤 */}
-      <div className="flex items-end gap-4">
+      <div className="flex items-end gap-6">
         
         {/* 대제목 (예: Program) */}
         <h1 className="title-120-bold">
