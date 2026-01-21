@@ -1,6 +1,6 @@
 import arrow from '../assets/icon/arrow.svg';
 
-const ButtonApply = ({ type, className }) => {
+const ButtonApply = ({ type, className, onClick }) => {
   const long =
     ' pl-[32px] pr-[24px] py-[8px] text-[24px] font-gray-01 whitespace-nowrap';
   const short = 'w-[95px] px-[16px] py-[8px] text-[18px] whitespace-nowrap';
@@ -10,6 +10,7 @@ const ButtonApply = ({ type, className }) => {
 
   return (
     <button
+      onClick={onClick}
       className={
         'button_layout button_text flex justify-center items-center ' +
         (type === 'long' ? long : short) +
