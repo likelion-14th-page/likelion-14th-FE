@@ -24,7 +24,7 @@ export default function EventCard({ title, date, isDisabled = false, colSpan = 1
       {/* 제목 부분 */}
       <div
         className={`
-          px-6 py-4 text-center flex items-center justify-center h-20 rounded-lg transition-all duration-200
+          px-6 py-4 text-center flex items-center justify-center h-15 rounded-lg transition-all duration-200
           ${
             isDisabled
               ? 'bg-gray-04 text-black opacity-60'
@@ -38,7 +38,7 @@ export default function EventCard({ title, date, isDisabled = false, colSpan = 1
       {/* 날짜 부분 */}
       <div
         className={`
-          px-6 py-4 text-center flex items-center justify-center h-20 rounded-lg transition-all duration-200
+          px-6 py-4 text-center flex items-center justify-center h-15 rounded-lg transition-all duration-200
           ${
             isDisabled
               ? 'text-gray-04 opacity-60'

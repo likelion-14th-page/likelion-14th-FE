@@ -1,4 +1,5 @@
 import EventSeason from '../components/events/EventSeason';
+import PageHeader from "../components/common/PageHeader";
 
 export default function Events() {
   // 1학기
@@ -77,25 +78,8 @@ export default function Events() {
 
   return (
     <div className="bg-bg-dark min-h-screen text-white">
-      {/* 헤더 섹션 */}
-      <section className="py-16 px-4 sm:px-8 border-b border-gray-07">
-        <p className="detail-12-regular text-orange-04 mb-4">행사 일정</p>
-
-        <div className="flex items-end gap-4">
-          <h1 className="title-64-bold">Program</h1>
-
-          <div className="h-full flex items-end">
-            <p className="body-14-regular text-gray-05 leading-relaxed">
-              2024년 멋쟁이사자처럼 14기에서 진행할
-              <br />
-              1년 로드맵을 소개합니다
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* 컨텐츠 섹션 */}
-      <section className="py-20 px-4 sm:px-8">
+      <section className="py-20">
         
         {/* 1학기에만 description 전달 */}
         <EventSeason 

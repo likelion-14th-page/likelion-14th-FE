@@ -1,6 +1,6 @@
 import lion from '../assets/home/logo-lion.svg';
 import hongik from '../assets/home/logo-hongik.svg';
-import Navbar from '../layout/NavBar';
+import Navbar from '../layout/Navbar';
 import ButtonApply from '../layout/ButtonApply';
 
 const Home = () => {
