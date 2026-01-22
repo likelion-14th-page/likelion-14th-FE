@@ -5,6 +5,7 @@ import ButtonApply from '../layout/ButtonApply';
 import Introduction from '../components/home/Introduction';
 import KeyComp from '../components/home/KeyComp';
 import Track from '../components/home/Track';
+import SeeMore from '../components/home/SeeMore';
 
 const Home = () => {
   return (
@@ -43,10 +44,16 @@ const Home = () => {
         <Introduction />
         <KeyComp />
         <Track />
+        <div
+          alt="바로가기"
+          className="flex flex-row gap-[20px] justify-center items-center mb-[80px]"
+        >
+          <SeeMore text="모집 안내 사항 바로가기" />
+          <SeeMore text="지난 기수 프로젝트 바로가기" />
+        </div>
       </div>
-      <div alt="바로가기">
-        <div>모집 안내사항 바로가기</div>
-        <div>지난 기수 프로젝트 보러가기</div>
+      <div className="flex justify-center items-center mb-[164px]">
+        <ButtonApply type="long" />
       </div>
     </>
   );
