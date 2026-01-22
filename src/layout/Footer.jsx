@@ -1,7 +1,7 @@
 import Manager from '../components/home/Manager';
 
-const Footer = () => {
-  return (
+const Footer = ({ home = false }) => {
+  return home === true ? (
     <div className="bg-bg-secondary px-[140px] pt-[92px] pb-[141px]">
       <div className="flex flex-row gap-[120px] justify-start items-start">
         <div className="flex flex-col gap-[64px]">
@@ -21,6 +21,9 @@ const Footer = () => {
         <Manager />
       </div>
     </div>
+  ) : (
+    // 적용할 클래스명
+    <div className="h-[464px] bg-[radial-gradient(59.61%_59.61%_at_50%_100%,#6E2900_0%,#080300_100%)]"></div>
   );
 };
 

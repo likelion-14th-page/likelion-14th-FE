@@ -1,6 +1,14 @@
-export default function EventCard({ title, date, isDisabled = false, colSpan = 1 }) {
+export default function EventCard({
+  title,
+  date,
+  isDisabled = false,
+  colSpan = 1,
+  description = '',
+  isMandatory = false,
+}) {
   const hasDateNumber = /\d/.test(date);
-  const showBorder = !isDisabled && hasDateNumber;
+  const showBorder = !isDisabled && hasDateNumber && !isMandatory;
+  const noticeLater = isMandatory && isDisabled;
 
   // colSpan 값에 따른 Tailwind 클래스 매핑
   const getColSpanClass = (span) => {
@@ -26,7 +34,7 @@ export default function EventCard({ title, date, isDisabled = false, colSpan = 1
         className={`
           px-6 py-4 text-center flex items-center justify-center h-15 rounded-lg transition-all duration-200
           ${
-            isDisabled
+            isDisabled && !noticeLater
               ? 'bg-gray-04 text-black opacity-60'
               : 'bg-bright-orange-02 text-bg-dark hover:shadow-lg'
           }
@@ -40,19 +48,20 @@ export default function EventCard({ title, date, isDisabled = false, colSpan = 1
         className={`
           px-6 py-4 text-center flex items-center justify-center h-15 rounded-lg transition-all duration-200
           ${
-            isDisabled
+            isDisabled || noticeLater
               ? 'text-gray-04 opacity-60'
               : 'text-gray-01 hover:shadow-lg'
           }
-          ${
-            showBorder ? 'border-2 border-gray-01' : ''
-          }
+          ${showBorder ? 'border-[1.5px] border-gray-01' : ''}
         `}
       >
-        <div className={hasDateNumber ? "body-18-bold" : "body-18-regular"}>
+        <div className={hasDateNumber ? 'body-18-bold' : 'body-18-regular'}>
           {date}
         </div>
       </div>
+      {description && (
+        <div className="text-gray-03 body-14-regular">{description}</div>
+      )}
     </div>
   );
 }

@@ -49,14 +49,14 @@ const Home = () => {
           alt="바로가기"
           className="flex flex-row gap-[20px] justify-center items-center mb-[80px]"
         >
-          <SeeMore text="모집 안내 사항 바로가기" />
+          <SeeMore text="모집 안내 사항 바로가기" navi={'/recruiting'} />
           <SeeMore text="지난 기수 프로젝트 바로가기" />
         </div>
       </div>
       <div className="flex justify-center items-center mb-[164px]">
         <ButtonApply type="long_footer" />
       </div>
-      <Footer />
+      <Footer home={true} />
     </>
   );
 };
