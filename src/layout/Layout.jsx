@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import PageHeader from '../components/common/PageHeader';
+import Footer from '../layout/Footer';
 
 const Layout = () => {
   const location = useLocation();
@@ -49,6 +50,7 @@ const Layout = () => {
         <main className="w-full px-[120px] py-10">
           <Outlet />
         </main>
+        <Footer />
       </div>
     </div>
   );

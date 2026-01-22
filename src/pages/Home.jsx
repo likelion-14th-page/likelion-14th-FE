@@ -56,7 +56,7 @@ const Home = () => {
       <div className="flex justify-center items-center mb-[164px]">
         <ButtonApply type="long_footer" />
       </div>
-      <Footer />
+      <Footer home={true} />
     </>
   );
 };
