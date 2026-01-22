@@ -37,7 +37,7 @@ const Layout = () => {
       </div>
 
       {/* 2. 컨텐츠 영역 (네브바 높이만큼 아래로 밀기) */}
-      <div className="pt-[100px] w-full">
+      <div className="pt-[50px] w-full">
         {currentHeader && (
           <PageHeader
             subtitle={currentHeader.subtitle}
