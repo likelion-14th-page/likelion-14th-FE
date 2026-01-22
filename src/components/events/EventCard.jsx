@@ -1,4 +1,4 @@
-export default function EventCard({ title, date, isDisabled = false, colSpan = 1 }) {
+export default function EventCard({ title, date, isDisabled = false, colSpan = 1 , description = ''}) {
   const hasDateNumber = /\d/.test(date);
   const showBorder = !isDisabled && hasDateNumber;
 
@@ -40,9 +40,9 @@ export default function EventCard({ title, date, isDisabled = false, colSpan = 1
         className={`
           px-6 py-4 text-center flex items-center justify-center h-15 rounded-lg transition-all duration-200
           ${
-            isDisabled
-              ? 'text-gray-04 opacity-60'
-              : 'text-gray-01 hover:shadow-lg'
+            hasDateNumber
+              ? 'text-gray-01 hover:shadow-lg'
+              : 'text-gray-04 opacity-60'
           }
           ${
             showBorder ? 'border-2 border-gray-01' : ''
@@ -53,6 +53,9 @@ export default function EventCard({ title, date, isDisabled = false, colSpan = 1
           {date}
         </div>
       </div>
+      {description && (
+        <div className="text-gray-03 body-14-regular">{description}</div>
+      )}
     </div>
   );
 }

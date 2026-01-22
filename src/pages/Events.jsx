@@ -79,16 +79,15 @@ export default function Events() {
   return (
     <div className="bg-bg-dark min-h-screen text-white">
       {/* 컨텐츠 섹션 */}
-      <section className="py-20">
-        
+      <section className="py-20">        
         {/* 1학기에만 description 전달 */}
         <EventSeason 
           season="1학기" 
           monthsData={eventsSemester1} 
           seasonColor="#FFFFFF"
           description={
-            <p className="body-14-regular text-gray-05">
-              * 모든 일정은 학사 일정 및 상황에 따라 변경될 수 있습니다.
+            <p className="body-14-regular text-gray-05 pb-8">
+              *세션은 매주 목요일 진행됩니다
             </p>
           } 
         />

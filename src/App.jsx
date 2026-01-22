@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Layout from "./layout/Layout";
-import ColorTest from "./components/common/ColorTest";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Layout from './layout/Layout';
+import ColorTest from './components/common/ColorTest';
 import Home from './pages/Home';
 import Events from "./pages/Events";
 import Archaive from "./pages/Archaive";
