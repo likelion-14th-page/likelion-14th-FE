@@ -2,11 +2,16 @@ import lion from '../assets/home/logo-lion.svg';
 import hongik from '../assets/home/logo-hongik.svg';
 import Navbar from '../layout/Navbar';
 import ButtonApply from '../layout/ButtonApply';
+import Introduction from '../components/home/Introduction';
+import KeyComp from '../components/home/KeyComp';
+import Track from '../components/home/Track';
 
 const Home = () => {
   return (
     <>
-      <Navbar />
+      <div className="fixed top-0 left-0 w-full z-50 bg-bg-dark">
+        <Navbar />
+      </div>
       <div className="relative w-full h-screen overflow-hidden bg-bg-dark">
         <div
           alt="텍스트"
@@ -30,6 +35,18 @@ const Home = () => {
           alt="logo"
           className="absolute top-[12px] right-[2px] z-0"
         />
+      </div>
+      <div
+        alt="기타 설명"
+        className="flex flex-col gap-[144px] mx-[150px] mb-[144px]"
+      >
+        <Introduction />
+        <KeyComp />
+        <Track />
+      </div>
+      <div alt="바로가기">
+        <div>모집 안내사항 바로가기</div>
+        <div>지난 기수 프로젝트 보러가기</div>
       </div>
     </>
   );
