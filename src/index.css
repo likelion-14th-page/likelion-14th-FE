@@ -173,6 +173,10 @@
     @apply text-[64px] font-bold leading-[120%];
   }
 
+  .title-48-semibold {
+    @apply text-[48px] font-semibold leading-[130%];
+  }
+
   .title-32-semibold {
     @apply text-[32px] font-semibold leading-[130%];
   }
