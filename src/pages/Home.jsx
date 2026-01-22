@@ -6,6 +6,7 @@ import Introduction from '../components/home/Introduction';
 import KeyComp from '../components/home/KeyComp';
 import Track from '../components/home/Track';
 import SeeMore from '../components/home/SeeMore';
+import Footer from '../layout/Footer';
 
 const Home = () => {
   return (
@@ -55,6 +56,7 @@ const Home = () => {
       <div className="flex justify-center items-center mb-[164px]">
         <ButtonApply type="long" />
       </div>
+      <Footer />
     </>
   );
 };
