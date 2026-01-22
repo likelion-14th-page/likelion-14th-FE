@@ -1,4 +1,4 @@
-export default function EventCard({ title, date, isDisabled = false, colSpan = 1 }) {
+export default function EventCard({ title, date, isDisabled = false, colSpan = 1 , description = ''}) {
   const hasDateNumber = /\d/.test(date);
   const showBorder = !isDisabled && hasDateNumber;
 
@@ -53,6 +53,9 @@ export default function EventCard({ title, date, isDisabled = false, colSpan = 1
           {date}
         </div>
       </div>
+      {description && (
+        <div className="text-gray-03 body-14-regular">{description}</div>
+      )}
     </div>
   );
 }

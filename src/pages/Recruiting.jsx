@@ -24,11 +24,11 @@ const Recruiting = () => {
       <div alt="모집 일정" className="mb-[104px] flex flex-col gap-y-[24px]">
         <div className="title-20-bold text-white">모집 일정</div>
         <div className="grid grid-cols-4 gap-[20px]">
-          <EventCard title="서류 접수" date="2월 16일 - 2월 26일" />
+          <EventCard title="서류 접수" date="2월 16일 - 26일" />
           <EventCard title="서류 합격 발표" date="3월 1일" />
           <EventCard
             title="면접 진행"
-            date="3월 3일 - 3월 5일"
+            date="3월 3일 - 5일"
             description="*면접은 대면으로 진행됩니다"
           />
           <EventCard
@@ -48,27 +48,23 @@ const Recruiting = () => {
           <EventCard title="MT" date="3월 13일 - 14일" />
           <EventCard
             title="아이디어톤"
-            isDisabled={true}
+            isDisabled={false}
             date="추후 공지"
-            isMandatory={true}
           />
           <EventCard
             title="애거돈"
-            isDisabled={true}
+            isDisabled={false}
             date="추후 공지"
-            isMandatory={true}
           />
           <EventCard
             title="해커톤"
-            isDisabled={true}
+            isDisabled={false}
             date="추후 공지"
-            isMandatory={true}
           />
           <EventCard
             title="데모데이"
-            isDisabled={true}
+            isDisabled={false}
             date="추후 공지"
-            isMandatory={true}
           />
         </div>
       </div>
