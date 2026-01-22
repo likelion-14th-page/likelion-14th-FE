@@ -30,7 +30,7 @@ const Home = () => {
           <div className="flex justify-start explanation mt-[16px] mb-[96px]">
             국내 최대 규모의 IT 창업 연합 동아리
           </div>
-          <ButtonApply type="long" />
+          <ButtonApply type="long_title" />
         </div>
         <img
           src={lion}
@@ -54,7 +54,7 @@ const Home = () => {
         </div>
       </div>
       <div className="flex justify-center items-center mb-[164px]">
-        <ButtonApply type="long" />
+        <ButtonApply type="long_footer" />
       </div>
       <Footer />
     </>

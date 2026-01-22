@@ -36,6 +36,7 @@
   --color-orange-02: #804229;
   --color-orange-03: #dc8563;
   --color-orange-04: #ba4e23;
+  --color-orange-01-hover: #531e08;
   --color-bright-orange-01: #ffe4d3;
   --color-bright-orange-02: #f3eae5;
   --color-bright-orange-01-hover: #eccebb;
@@ -135,7 +136,7 @@
     line-height: 130%; /* 26px */
   }
 
-  .button_layout {
+  /* .button_layout {
     border-radius: 100px;
     border: 1.5px solid var(--or-orange-02, #804229);
     background: var(--or-orange-01, #6c2d14);
@@ -157,11 +158,11 @@
     text-align: center;
 
     /* Body/18_Semibold */
-    font-family: 'Pretendard';
+  /* font-family: 'Pretendard';
     font-style: normal;
     font-weight: 600;
     line-height: 150%; /* 27px */
-  }
+  /* } */
 }
 
 /* Title Styles */
