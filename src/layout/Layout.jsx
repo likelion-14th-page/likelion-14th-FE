@@ -47,7 +47,7 @@ const Layout = () => {
         )}
 
         {/* 본문 영역 */}
-        <main className="w-full px-[120px] py-10">
+        <main className="w-full px-[150px] py-10">
           <Outlet />
         </main>
         <Footer />
