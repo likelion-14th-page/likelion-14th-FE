@@ -2,7 +2,7 @@
 
 @theme {
   --font-family-sans:
-    'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Typography - Title */
   --font-size-title-64: 64px;
@@ -22,6 +22,7 @@
 
   /* Font Weights */
   --font-weight-regular: 400;
+  --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
