@@ -79,7 +79,7 @@ export default function Events() {
   return (
     <div className="bg-bg-dark min-h-screen text-white">
       {/* 컨텐츠 섹션 */}
-      <section className="py-16">        
+      <section className="py-20">        
         {/* 1학기에만 description 전달 */}
         <EventSeason 
           season="1학기" 
