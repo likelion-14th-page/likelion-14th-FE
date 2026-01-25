@@ -17,7 +17,7 @@ const PartCard = ({ track }) => {
             alt="화살표"
             src={more}
             className={`
-              w-[46px] h-[46px] px-[16px] py-[10px] rounded-full transition-all duration-200
+              w-[46px] h-[46px] pr-[18px] pl-[20px] py-[10px] rounded-full transition-all duration-200
               ${track.iconBgColor}
               ${track.hoverIconBgColor}
               ${track.pressedIconBgColor}
@@ -27,7 +27,7 @@ const PartCard = ({ track }) => {
 
         <div className="flex flex-col gap-[16px]">
           <div className="title-20-bold text-[#080300]">{track.title}</div>
-          <div className="body-16-regular text-gray-07 break-keep">
+          <div className="body-16-medium text-gray-07 break-keep">
             {track.description}
           </div>
         </div>

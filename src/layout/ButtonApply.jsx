@@ -2,7 +2,7 @@ import arrow from '../assets/icon/arrow.svg';
 
 const ButtonApply = ({ type, className, onClick }) => {
   const long_title =
-    ' w-fit pl-[32px] pr-[24px] py-[16px] title-24-semibold text-gray-01 border-orange-04';
+    ' w-fit pl-[32px] pr-[24px] py-[16px] title-20-bold text-gray-01 border-orange-04';
   const short = 'w-fit px-[16px] py-[8px] body-18-semibold border-orange-02';
   const long_footer =
     'pl-[32px] pr-[24px] py-[16px] title-20-bold text-gray-01 border-orange-04';
