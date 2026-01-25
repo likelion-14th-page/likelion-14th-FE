@@ -7,6 +7,7 @@ import Archaive from "./pages/Archaive";
 import Recruiting from "./pages/Recruiting";
 import ApplyEnd from "./pages/ApplyEnd";
 import ApplyCheckPage from "./pages/applycheck/ApplyCheckPage";
+import FAQ from "./pages/FAQ";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/archaive" element={<Archaive />} />
           <Route path="/recruiting" element={<Recruiting />} />
           <Route path="/apply-end" element={<ApplyEnd />} />
+          <Route path="/faq" element={<FAQ />} />
         </Route>
 
         {/* 2. 레이아웃이 필요 없는 페이지 (그룹 밖으로 뺌) */}
