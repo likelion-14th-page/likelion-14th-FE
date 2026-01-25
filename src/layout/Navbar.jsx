@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-[58px] bg-bg-dark flex items-center justify-between px-[120px] my-[8px] py-[8px]">
+    <div className=" max-w-[1140px] mx-auto h-[58px] bg-bg-dark flex items-center justify-between my-[8px] py-[8px]">
       <div
         onClick={() => navigate('/')}
         className="px-[32px] py-[16px] cursor-pointer navbar_title transition-colors duration-300 hover:text-gray-02"

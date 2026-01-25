@@ -7,7 +7,7 @@ const Track = () => {
       <div className="flex flex-col gap-[24px] bg-black ">
         <div className="flex flex-row justify-between">
           <div className="title-20-bold text-white">모집 트랙</div>
-          <div className="group flex flex-row gap-[12px] body-14-semibold transition-colors text-gray-02 hover:text-gray-03 justify-center items-center cursor-pointer">
+          <div className="group flex flex-row gap-[12px] body-18-semibold transition-colors text-gray-02 hover:text-gray-03 justify-center items-center cursor-pointer">
             모집 정보 확인하기{' '}
             <svg
               className="w-[9px] h-[16px] transition-colors text-gray-02 group-hover:text-gray-03"

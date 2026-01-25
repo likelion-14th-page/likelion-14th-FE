@@ -24,10 +24,10 @@ const Home = () => {
             className="gap-[12px] flex items-center mb-[24px]"
           >
             <img src={hongik} alt="logo" className="w-[43px]" />
-            <div className="hongik">홍익대학교</div>
+            <div className="title-32-semibold">홍익대학교</div>
           </div>
-          <div className="likelion">멋쟁이 사자처럼</div>
-          <div className="flex justify-start explanation mt-[16px] mb-[96px]">
+          <div className="title-80-semibold">멋쟁이 사자처럼</div>
+          <div className="flex justify-start title-28-semibold text-gray-02 mt-[16px] mb-[96px]">
             국내 최대 규모의 IT 창업 연합 동아리
           </div>
           <ButtonApply type="long_title" />
