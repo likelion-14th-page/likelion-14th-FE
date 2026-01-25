@@ -30,14 +30,14 @@ const Layout = () => {
   const currentHeader = headerConfig[location.pathname];
 
   return (
-    <div className="max-w-[1200px] mx-auto min-h-screen bg-bg-dark">
+    <div className="w-full min-h-screen bg-bg-dark">
       {/* 1. 네브바 고정 영역 */}
       <div className="fixed top-0 left-0 w-full z-50 bg-bg-dark">
         <Navbar />
       </div>
 
       {/* 2. 컨텐츠 영역 (네브바 높이만큼 아래로 밀기) */}
-      <div className="pt-[50px]">
+      <div className="pt-[50px] max-w-[1200px] mx-auto">
         {currentHeader && (
           <PageHeader
             subtitle={currentHeader.subtitle}
@@ -47,11 +47,11 @@ const Layout = () => {
         )}
 
         {/* 본문 영역 */}
-        <main className="px-[150px] py-10">
+        <main className="py-10">
           <Outlet />
         </main>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };
