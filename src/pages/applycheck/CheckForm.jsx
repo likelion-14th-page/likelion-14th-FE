@@ -37,10 +37,9 @@ const CheckForm = ({ onCheck, isError, setIsError }) => {
   return (
     <div className="w-full flex flex-col gap-6 px-4 items-center">
       {/* 안내 문구 */}
-      <div className="text-center mb-4">
+      <div className="text-center mb-20">
         <h2 className="title-48-semibold text-white mb-2">홍익대 멋사 14기<br/>지원결과 조회</h2>
       </div>
-
       {/* 입력 필드 영역 */}
       <div className="flex flex-col items-center gap-2 bp-14">
         
@@ -109,11 +108,11 @@ const CheckForm = ({ onCheck, isError, setIsError }) => {
         {/* 조회 버튼 */}
         <button 
           onClick={handleSubmit}
-          disabled={!isActive} 
+          disabled={!isActive}
           className={`mt-4 w-[370px] h-[54px] p-[16px] rounded-[8px] text-white font-bold transition-all duration-200
             ${isActive 
-              ? 'bg-orange-01 border border-orange-04 hover:brightness-110 cursor-pointer' 
-              : 'bg-gray-04 cursor-not-allowed border-none' 
+              ? 'bg-orange-01 border border-orange-04 hover:bg-orange-01-hover cursor-pointer'
+              : 'bg-gray-04 cursor-not-allowed border-none'
             }
           `}
         >

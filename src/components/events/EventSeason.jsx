@@ -7,7 +7,7 @@ export default function EventSeason({ season, monthsData, seasonColor, descripti
     <div className="flex gap-6 mb-16">
       
       {/* 1. 왼쪽: 계절 제목 */}
-      <div className="flex-shrink-0 w-24 text-right pt-1">
+      <div className="flex-shrink-0 text-right pt-1">
         <h2 
           className="title-24-semibold break-keep"
           style={{ color: seasonColor }}
