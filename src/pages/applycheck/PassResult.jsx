@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-const PassResult = ({ name }) => {
+// 👇 info prop 추가 (면접 정보 객체)
+const PassResult = ({ name, info }) => {
   const navigate = useNavigate();
   const firstName = name.length >= 3 ? name.slice(1) : name;
 
@@ -8,13 +9,11 @@ const PassResult = ({ name }) => {
     <div className="w-full flex flex-col items-start px-8">
       
       {/* Part 1. 상단 타이틀 */}
-      <div className="mb-[48px]">
+      <div className="mb-[48px] pt-8">
         <div className="flex items-end mb-2">
-          {/* 이름 */}
           <span className="title-32-semibold text-white mr-1 pr-2">
             {name}
           </span>
-          {/* 님 */}
           <span className="title-20-bold text-white">
              님
           </span>
@@ -36,66 +35,57 @@ const PassResult = ({ name }) => {
         소중한 시간 내어 주시는 만큼 저희도 최선을 다해 준비하겠습니다.
       </div>
 
-      {/* Part 3. 면접 정보 카드 */}
+      {/* Part 3. 면접 정보 카드 (API 데이터 바인딩 + 좌측 정렬 유지) */}
       <div className="w-full max-w-[280px] bg-bg-secondary rounded-[8px] p-4 flex flex-col gap-4 mb-[60px]">
         
         {/* 첫 번째 줄: 면접 장소 */}
         <div className="flex items-start gap-[24px]">
-          {/* 라벨 너비 고정 (min-w)을 줘서 세로줄을 맞춤 */}
-          <span className="body-16-semibold text-gray-03">
+          <span className="body-16-semibold text-gray-03 whitespace-nowrap">
             면접 장소 
           </span>
           <span className="body-18-semibold text-white">
-            Q111
+            {info?.place || "장소 미정"}
           </span>
         </div>
 
         {/* 두 번째 줄: 면접 일자 */}
         <div className="flex items-start gap-[24px]">
-          {/* 라벨 너비 고정 (min-w)을 줘서 세로줄을 맞춤 */}
-          <span className="body-16-semibold text-gray-03">
+          <span className="body-16-semibold text-gray-03 whitespace-nowrap">
             면접 일자 
           </span>
           <span className="body-18-semibold text-white">
-            2월 nn일 (뭔요일)
+            {info?.date || "일자 미정"}
           </span>
         </div>
 
         {/* 세 번째 줄: 면접 시간 */}
         <div className="flex items-start gap-[24px]">
-          <span className="body-16-semibold text-gray-03">
+          <span className="body-16-semibold text-gray-03 whitespace-nowrap">
             면접 시간
           </span>
           <span className="body-18-semibold text-white">
-            00시 00분
+            {info?.time || "시간 미정"}
           </span>
         </div>
       </div>
 
       {/* 하단 (추가 문의 & 홈 버튼) */}
       <div className="w-full flex justify-between items-end">
-        
-        {/* 왼쪽: 추가 문의 영역 */}
         <div className="flex flex-col gap-2">
           <span className="body-16-semibold text-gray-02 ml-1">추가 문의</span>
-          
           <div className="flex gap-2">
-            {/* 전화번호 칩 */}
             <div className="flex px-[24px] py-[8px] justify-center items-center gap-[10px] rounded-[100px]  bg-gray-07 text-gray-01 body-14-semibold">
               010-3120-2936
             </div>
-            
-            {/* 이메일 칩 */}
             <div className="flex px-[24px] py-[8px] justify-center items-center gap-[10px] rounded-[100px]  bg-gray-07 text-gray-01 body-14-semibold">
               hongik.likelion@gmail.com
             </div>
           </div>
         </div>
 
-        {/* 오른쪽: 홈으로 이동 버튼 (ApplyClosed와 동일 스타일) */}
         <button
           onClick={() => navigate('/')}
-          className="flex justify-center items-center gap-[10px] px-[24px] py-[16px] rounded-[100px] border border-[#BA4E23] bg-[#6C2D14] text-white font-semibold hover:brightness-110 transition-all"
+          className="flex justify-center items-center gap-[10px] px-[24px] py-[16px] rounded-[100px] border border-orange-04 bg-orange-01 text-white font-semibold hover:bg-orange-01-hover cursor-pointer transition-all"
         >
           홈으로 이동
         </button>
