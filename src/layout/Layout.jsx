@@ -6,6 +6,11 @@ import Footer from '../layout/Footer';
 const Layout = () => {
   const location = useLocation();
 
+  // 헤더가 없는(상단 패딩을 제거할) 페이지 목록
+  const noHeaderPages = ['/apply-check', '/apply-closed'];
+  
+  const isNoHeaderPage = noHeaderPages.includes(location.pathname);
+
   const headerConfig = {
     '/events': {
       subtitle: '행사 일정',
@@ -36,8 +41,9 @@ const Layout = () => {
         <Navbar />
       </div>
 
-      {/* 2. 컨텐츠 영역 (네브바 높이만큼 아래로 밀기) */}
-      <div className="pt-[50px] max-w-[1200px] mx-auto">
+      {/* 2. 메인 컨텐츠 영역 */}
+      <div className={` ${isNoHeaderPage ? 'pt-0' : 'pt-[50px]'} pt-[50px] max-w-[1200px] mx-auto`}>
+       
         {currentHeader && (
           <PageHeader
             subtitle={currentHeader.subtitle}
@@ -47,7 +53,7 @@ const Layout = () => {
         )}
 
         {/* 본문 영역 */}
-        <main className="py-10">
+        <main className={`${isNoHeaderPage ? '' : 'py-10'}`}>
           <Outlet />
         </main>
       </div>

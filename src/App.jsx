@@ -19,11 +19,11 @@ function App() {
           <Route path="/archaive" element={<Archaive />} />
           <Route path="/recruiting" element={<Recruiting />} />
           <Route path="/apply-end" element={<ApplyEnd />} />
-          <Route path="/apply-check" element={<ApplyCheckPage />} />
         </Route>
 
         {/* 2. 레이아웃이 필요 없는 페이지 (그룹 밖으로 뺌) */}
         <Route path="/" element={<Home />} />
+        <Route path="/apply-check" element={<ApplyCheckPage />} />
       </Routes>
     </Router>
   );
