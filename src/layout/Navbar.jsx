@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
       <div
         onClick={() => navigate(path)}
-        className="relative px-[24px] py-[16px] cursor-pointer group flex items-center justify-center"
+        className="relative mx-0 px-[24px] py-[16px] cursor-pointer group flex items-center justify-center"
       >
         {/* 1. 배경 그라데이션: 현재 페이지(isActive)면 opacity-100, 아니면 호버 시에만 나타남 */}
         <div
@@ -36,10 +36,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" max-w-[1140px] mx-auto h-[58px] bg-bg-dark flex items-center justify-between my-[8px] py-[8px]">
+    <div className="max-w-[1200px] mx-auto h-[58px] bg-bg-dark flex items-center justify-between my-[8px] py-[8px]">
       <div
         onClick={() => navigate('/')}
-        className="px-[32px] py-[16px] cursor-pointer navbar_title transition-colors duration-300 hover:text-gray-02"
+        className=" py-[16px] cursor-pointer navbar_title transition-colors duration-300 hover:text-gray-02"
       >
         LIKELION HONGIK
       </div>
@@ -51,7 +51,7 @@ const Navbar = () => {
           <NavItem label="행사 일정" path="/events" />
           <NavItem label="FAQ" path="/faq" />
         </div>
-        <ButtonApply type="short" className="mx-[28px]" />
+        <ButtonApply type="short" className="ml-[24px]" />
       </div>
     </div>
   );
