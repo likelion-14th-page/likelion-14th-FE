@@ -6,9 +6,11 @@ const Introduction = () => {
         <div className="body-16-semibold text-orange-04">
           내 아이디어를 내 손으로 실현하자! Growl to World
         </div>
-        <div className="title-20-semibold text-black">
-          멋쟁이 사자처럼 대학은 국내외 121개 대학, 4천여명이 함께하는 국내 최대
-          규모 IT 창업 동아리입니다
+        <div className="title-20-semibold flex text-center text-black">
+          멋쟁이 사자처럼 대학은 국내외 121개 대학,
+          <br className="sm:hidden block" /> 4천여명이 함께하는
+          <br className="lg:hidden block" />
+          국내 최대 규모 IT 창업 동아리입니다
         </div>
       </div>
     </div>
