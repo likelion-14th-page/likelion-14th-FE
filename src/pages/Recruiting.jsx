@@ -4,8 +4,7 @@ import ButtonApply from '../layout/ButtonApply';
 
 const Recruiting = () => {
   return (
-    <div className="">
-      {/* 1. 모집 대상 (변경 없음) */}
+    <div className="bg-bg-dark min-h-screen text-white">
       <div alt="모집 대상" className="mb-[96px] flex flex-col gap-y-[24px]">
         <div className="title-20-bold text-white">모집 대상</div>
         <div className="body-18-regular text-gray-02">
@@ -60,26 +59,10 @@ const Recruiting = () => {
         <div className="grid grid-cols-2 min-[600px]:grid-cols-3 min-[1440px]:grid-cols-6 gap-[20px]">
           <EventCard title="OT" date="3월 10일" />
           <EventCard title="MT" date="3월 13일 - 14일" />
-          <EventCard
-            title="아이디어톤"
-            isDisabled={false}
-            date="추후 공지"
-          />
-          <EventCard
-            title="애거돈"
-            isDisabled={false}
-            date="추후 공지"
-          />
-          <EventCard
-            title="해커톤"
-            isDisabled={false}
-            date="추후 공지"
-          />
-          <EventCard
-            title="데모데이"
-            isDisabled={false}
-            date="추후 공지"
-          />
+          <EventCard title="아이디어톤" isDisabled={false} date="추후 공지" />
+          <EventCard title="애거돈" isDisabled={false} date="추후 공지" />
+          <EventCard title="해커톤" isDisabled={false} date="추후 공지" />
+          <EventCard title="데모데이" isDisabled={false} date="추후 공지" />
         </div>
       </div>
 
