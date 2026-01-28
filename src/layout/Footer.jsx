@@ -3,19 +3,19 @@ import Manager from '../components/home/Manager';
 const Footer = ({ home = false }) => {
   return home === true ? (
     /* 1. 배경을 담당하는 바깥쪽 Div (w-full) */
-    <footer className="w-full bg-bg-secondary pt-[92px] pb-[141px]">
+    <footer className="w-full responsive-layout bg-bg-secondary pt-[92px] pb-[141px]">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="flex flex-row gap-[120px] justify-start items-start">
+        <div className="flex lg:flex-row flex-col gap-[120px] lg:justify-start lg:items-start ">
           {/* 인스타그램 & 이메일 섹션 */}
-          <div className="flex flex-col gap-[64px]">
+          <div className="flex lg:flex-col flx-row gap-[64px] justify-end items-end">
             <div className="flex flex-col gap-[32px]">
-              <div className="title-20-semibold text-white">인스타그램</div>
+              <div className="title-20-bold text-white">인스타그램</div>
               <div className="py-[8px] px-[24px] body-18-semibold text-white bg-gray-07 rounded-full w-fit">
                 @likelion_hongik
               </div>
             </div>
             <div className="flex flex-col gap-[32px]">
-              <div className="title-20-semibold text-white">이메일</div>
+              <div className="title-20-bold text-white">이메일</div>
               <div className="py-[8px] px-[24px] body-18-semibold text-white bg-gray-07 rounded-full w-fit">
                 hongik.likelion@gmail.com
               </div>
