@@ -6,7 +6,7 @@ const KeyComp = () => {
         <div className="title-20-semibold text-black flex bg-bright-orange-02 px-[40px] py-[32px] gap-[12px] rounded-[16px] justify-center items-center whitespace-nowrap">
           <div className="whitespace-nowrap">
             협업 과정에서 <span className="text-orange-04">원활한 소통</span>
-            으로 함께 성장해나갈 수 있는 분
+            으로 <br className="block sm:hidden" /> 함께 성장해나갈 수 있는 분
           </div>
         </div>
         <div className="title-20-semibold text-black flex bg-bright-orange-02 px-[40px] py-[32px] gap-[12px] rounded-[16px] justify-center items-center whitespace-nowrap">
@@ -19,7 +19,8 @@ const KeyComp = () => {
           <div className="whitespace-nowrap">
             실제로 구현하고 싶은{' '}
             <span className="text-orange-04">아이디어</span>
-            와, 이에 대한 열정이 있는 분
+            와, <br className="block sm:hidden" />
+            이에 대한 열정이 있는 분
           </div>
         </div>
         <div className="title-20-semibold text-black flex bg-bright-orange-02 px-[40px] py-[32px] gap-[12px] rounded-[16px] justify-center items-center whitespace-nowrap">
