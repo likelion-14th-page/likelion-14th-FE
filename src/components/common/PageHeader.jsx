@@ -1,19 +1,20 @@
 const PageHeader = ({ title, subtitle, description }) => {
   return (
-    // 상하 패딩(py-16)과 하단 테두리(border-b)만 유지했습니다.
     <section className="py-16 w-full border-b border-gray-07">
-      {/* 소제목 (예: 행사 일정) */}
-      <p className="body-16-semibold text-orange-04">{subtitle}</p>
+      {/* 소제목 */}
+      <p className="body-16-semibold text-orange-04 mb-2 lg:mb-0">{subtitle}</p>
 
-      {/* 대제목과 설명글을 가로로 배치하고 아래쪽 라인을 맞춤 */}
-      <div className="flex items-end gap-6">
-        {/* 대제목 (예: Program) */}
-        <h1 className="title-120-bold">{title}</h1>
+      {/* lg:items-end : 1024px 이상에서 하단 정렬 */}
+      <div className="flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6">
+        
+        {/* 대제목 */}
+        <h1 className="font-bold leading-none text-[48px] md:text-[80px] lg:text-[100px] xl:text-[120px] break-words lg:shrink-0">
+          {title}
+        </h1>
 
-        {/* 설명글 */}
-        <div className="h-full flex items-end pb-4">
-          {/* 폰트 베이스라인 미세 조정을 위해 pb 추가 */}
-          <p className="body-16-semibold text-gray-05 leading-relaxed whitespace-pre-wrap">
+        {/* 설명글 영역 */}
+        <div className="w-full lg:pb-2">
+          <p className="body-12-semibold md:body-16-semibold text-gray-05 leading-relaxed whitespace-pre-wrap">
             {description}
           </p>
         </div>
