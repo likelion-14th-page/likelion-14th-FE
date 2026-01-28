@@ -24,7 +24,7 @@ const Track = () => {
             </svg>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-[20px]">
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-[20px]">
           {TRACK_DATA.map((track) => (
             // track 객체 통째로 넘겨주기
             <PartCard key={track.id} track={track} />

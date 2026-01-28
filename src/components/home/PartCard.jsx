@@ -12,7 +12,17 @@ const PartCard = ({ track }) => {
     >
       <div className="flex flex-col gap-[24px]">
         <div className="flex justify-between">
-          <img alt="트랙 아이콘" src={track.imgSrc} className="w-[160px]" />
+          <div className="flex flex-row gap-[16px]">
+            <img alt="트랙 아이콘" src={track.imgSrc} className="w-[160px]" />
+            <div className="lg:hidden flex flex-col justify-between itmes-start py-[8px] ">
+              <div className="title-24-semibold text-[#080300]">
+                {track.title}
+              </div>
+              <div className="body-16-medium text-gray-07 whitespace-pre-line">
+                {track.description}
+              </div>
+            </div>
+          </div>
           <img
             alt="화살표"
             src={more}
@@ -24,8 +34,7 @@ const PartCard = ({ track }) => {
             `}
           />
         </div>
-
-        <div className="flex flex-col gap-[16px]">
+        <div className="hidden lg:flex flex-col gap-[16px]">
           <div className="title-20-bold text-[#080300]">{track.title}</div>
           <div className="body-16-medium text-gray-07 break-keep">
             {track.description}

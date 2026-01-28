@@ -2,7 +2,7 @@ const KeyComp = () => {
   return (
     <div className="flex flex-col gap-[24px] bg-black ">
       <div className="title-20-bold text-white">인재상</div>
-      <div className="grid grid-cols-2 gap-[16px]">
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-[16px]">
         <div className="title-20-semibold text-black flex bg-bright-orange-02 px-[40px] py-[32px] gap-[12px] rounded-[16px] justify-center items-center whitespace-nowrap">
           <div className="whitespace-nowrap">
             협업 과정에서 <span className="text-orange-04">원활한 소통</span>

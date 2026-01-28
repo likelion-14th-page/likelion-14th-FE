@@ -150,22 +150,40 @@
 
   .responsive-layout {
     width: 100%;
-    /* 1440px 이상의 화면에서 콘텐츠가 차지할 실제 너비 */
-    max-width: 1140px;
     margin-left: auto;
     margin-right: auto;
 
-    /* 1440px 미만일 때만 작동하는 가변 패딩 */
-    padding-left: clamp(20px, 5vw, 150px);
-    padding-right: clamp(20px, 5vw, 150px);
+    /* 1. 기본 모바일 여백 (600px 미만) */
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
-  /* ✅ 중요: 1440px 이상에서는 패딩을 0으로 만들어야 
-     양옆 마진이 정확히 150px(1440-1140 / 2)이 됩니다. */
+  /* 2. sm ~ md 구간 (600px ~ 1023px) */
+  @media (min-width: 600px) {
+    .responsive-layout {
+      /* 40px에서 100px까지 자연스럽게 증가 */
+      padding-left: clamp(40px, 8vw, 80px);
+      padding-right: clamp(40px, 8vw, 80px);
+    }
+  }
+
+  /* 3. md 구간 (1024px ~ 1439px) 핵심 수정! */
+  @media (min-width: 1024px) {
+    .responsive-layout {
+      /* 1024px에서 100px, 1439px에서 120px이 되도록 유동적 계산 
+         계산식: 약 4.8vw + 50px */
+      padding-left: clamp(100px, 4.8vw + 50px, 120px);
+      padding-right: clamp(100px, 4.8vw + 50px, 120px);
+    }
+  }
+
+  /* 4. lg 구간 (1440px 이상) */
   @media (min-width: 1440px) {
     .responsive-layout {
+      max-width: 1140px; /* 콘텐츠 폭 고정 */
       padding-left: 0;
       padding-right: 0;
+      /* 자동으로 양옆 150px 이상의 마진이 생깁니다 */
     }
   }
 }

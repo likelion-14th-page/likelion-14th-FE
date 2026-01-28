@@ -42,7 +42,9 @@ const Layout = () => {
       </div>
 
       {/* 2. 컨텐츠 영역 (네브바 높이만큼 아래로 밀기) */}
-      <div className={`responsive-layout ${isNoHeaderPage ? '' : 'pt-[70px]'}`}>
+      <div
+        className={`responsive-layout  ${isNoHeaderPage ? '' : 'pt-[70px]'}`}
+      >
         {/* 이제 이 안의 PageHeader와 본문은 정확히 responsive-layout 너비를 따릅니다 */}
         {currentHeader && <PageHeader {...currentHeader} />}
         <main className={`${isNoHeaderPage ? '' : 'py-10'}`}>
