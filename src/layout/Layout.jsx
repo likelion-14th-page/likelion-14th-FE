@@ -35,28 +35,16 @@ const Layout = () => {
   const currentHeader = headerConfig[location.pathname];
 
   return (
-    <div className="w-full min-h-screen bg-bg-dark">
+    <div className="w-full min-h-screen bg-bg-dark ">
       {/* 1. 네브바 고정 영역 */}
       <div className="fixed top-0 left-0 w-full z-50 bg-bg-dark">
         <Navbar />
       </div>
 
       {/* 2. 컨텐츠 영역 (네브바 높이만큼 아래로 밀기) */}
-      <div
-        className={
-          `${isNoHeaderPage ? '' : 'pt-[50px] '}` +
-          ` xl:max-w-[1200px] lg:max-w-[1200px] md:max-w-[960px] sm:max-w-[720px] max-w-full mx-auto`
-        }
-      >
-        {currentHeader && (
-          <PageHeader
-            subtitle={currentHeader.subtitle}
-            title={currentHeader.title}
-            description={currentHeader.description}
-          />
-        )}
-
-        {/* 본문 영역 */}
+      <div className={`responsive-layout ${isNoHeaderPage ? '' : 'pt-[70px]'}`}>
+        {/* 이제 이 안의 PageHeader와 본문은 정확히 responsive-layout 너비를 따릅니다 */}
+        {currentHeader && <PageHeader {...currentHeader} />}
         <main className={`${isNoHeaderPage ? '' : 'py-10'}`}>
           <Outlet />
         </main>

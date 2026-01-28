@@ -11,7 +11,7 @@ import Footer from '../layout/Footer';
 const Home = () => {
   return (
     <>
-      <div className="max-w-[1200px] mx-auto">
+      <div className="responsive-layout">
         <div className="fixed top-0 left-0 w-full z-50 bg-bg-dark">
           <Navbar />
         </div>

@@ -147,6 +147,27 @@
     font-weight: 600;
     line-height: 150%; /* 27px */
   /* } */
+
+  .responsive-layout {
+    width: 100%;
+    /* 1440px 이상의 화면에서 콘텐츠가 차지할 실제 너비 */
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* 1440px 미만일 때만 작동하는 가변 패딩 */
+    padding-left: clamp(20px, 5vw, 150px);
+    padding-right: clamp(20px, 5vw, 150px);
+  }
+
+  /* ✅ 중요: 1440px 이상에서는 패딩을 0으로 만들어야 
+     양옆 마진이 정확히 150px(1440-1140 / 2)이 됩니다. */
+  @media (min-width: 1440px) {
+    .responsive-layout {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }
 
 @layer utilities {
