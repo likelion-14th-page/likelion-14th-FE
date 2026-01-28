@@ -20,19 +20,22 @@ const Home = () => {
       {/* h-screen을 주어 한 화면을 꽉 채우고, overflow-hidden으로 사자 이미지가 삐져나오지 않게 합니다. */}
       <section className="relative w-full h-screen flex justify-center items-center overflow-hidden">
         {/* ✅ 실제 내용물만 responsive-layout으로 감싸 중앙 정렬 */}
-        <div className="responsive-layout relative w-full flex flex-col items-center md:items-start">
-          <div className="relative z-10 flex flex-col items-center md:items-start">
-            <div className="gap-[12px] flex items-center mb-[24px] justify-center md:justify-start w-full">
-              <img src={hongik} alt="logo" className="w-[43px]" />
-              <div className="title-32-semibold text-white">홍익대학교</div>
+        <div className="responsive-layout relative w-full flex flex-col sm:items-center items-start md:items-start">
+          <div className="relative z-10  flex flex-col items-start sm:items-center md:items-start">
+            <div className="gap-[12px] flex sm:items-center items-start justify-start mb-[24px] sm:justify-center md:justify-start w-full">
+              <img src={hongik} alt="logo" className="sm:w-[43px] w-[23px]" />
+              <div className="sm:title-32-semibold title-18-semibold text-white">
+                홍익대학교
+              </div>
             </div>
-            <div className="title-80-semibold text-white text-center md:text-left">
+            <div className="md:title-80-semibold sm:title-64-bold title-48-semibold text-white text-left sm:text-center md:text-left">
               멋쟁이 사자처럼
             </div>
-            <div className="title-28-semibold text-gray-02 mt-[16px] mb-[96px] text-center md:text-left break-keep">
+            <div className="md:title-28-semibold title-20-semibold text-gray-02 mt-[16px] mb-[96px] text-left sm:text-center md:text-left break-keep">
               국내 최대 규모의 IT 창업 연합 동아리
             </div>
-            <ButtonApply type="long_title" />
+            <ButtonApply type="long_title" className={'hidden sm:block'} />
+            <ButtonApply type="short" className={'sm:hidden block'} />
           </div>
 
           {/* 사자 로고 (md 이상에서 절대 위치로 배치) */}
