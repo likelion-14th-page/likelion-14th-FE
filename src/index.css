@@ -226,6 +226,10 @@
     @apply text-[20px] font-bold leading-[130%];
   }
 
+  .title-18-bold {
+    @apply text-[18px] font-bold leading-[130%];
+  }
+
   /* Body Styles */
   .body-18-regular {
     @apply text-[18px] font-regular leading-[150%];

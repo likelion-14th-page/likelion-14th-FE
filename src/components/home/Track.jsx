@@ -24,9 +24,15 @@ const Track = () => {
             </svg>
           </div>
         </div>
-        <div className="grid lg:grid-cols-3 grid-cols-1 gap-[20px]">
+        <div
+          className="
+            flex sm:flex-col lg:flex-row flex-row gap-[12px] 
+            overflow-x-auto scrollbar-hide 
+            pb-[20px] px-[2px]
+            md:grid lg:grid-cols-3 sm:grid-cols-1 md:gap-[20px] overflow-visible
+          "
+        >
           {TRACK_DATA.map((track) => (
-            // track 객체 통째로 넘겨주기
             <PartCard key={track.id} track={track} />
           ))}
         </div>

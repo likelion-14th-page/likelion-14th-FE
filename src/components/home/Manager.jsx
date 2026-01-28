@@ -1,21 +1,80 @@
 import { MANAGER_DATA } from '../../data/ManagerData';
 
 const MemberCard = ({ member }) => (
-  <div className="flex lg:flex-col flex-row items-center gap-[16px]">
-    <div className="w-[100px] h-[100px] rounded-full bg-[#D9D9D9]  overflow-hidden">
-      <img
-        src={member.imgSrc}
-        alt={member.name}
-        className="w-full h-full object-cover"
-      />
+  /* 전체 컨테이너: 모바일은 세로(col), 데스크탑(md)은 가로(row) */
+  <div className="flex flex-col md:flex-row md:items-start lg:items-center gap-[12px] md:gap-[24px]">
+    {/* --- 1. 모바일 전용 헤더 (아이콘 + 이름 가로 배치) --- */}
+    <div className="md:hidden sm:block flex flex-col gap-[8px]">
+      <div className="flex md:hidden flex-row items-center gap-[8px] mb-[8px]">
+        <div className="w-[24px] h-[24px] rounded-full bg-[#D9D9D9] overflow-hidden shrink-0">
+          <img
+            src={member.imgSrc}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="title-20-semibold text-gray-01 ">{member.name}</div>
+      </div>
+      <div className="flex flex-col gap-[4px]">
+        <div className="body-16-regular text-gray-04 leading-tight">
+          {member.major}
+        </div>
+        {member.phone && (
+          <div className="body-16-regular text-gray-04 leading-tight">
+            {member.phone}
+          </div>
+        )}
+      </div>
     </div>
-    <div className="lg:text-center sm:text-start gap-[8px] flex flex-col">
-      <div className="title-20-semibold text-gray-01">{member.name}</div>
-      <div className="body-16-regular text-gray-04">{member.major}</div>
-      {member.phone && (
-        <div className="body-16-regular text-gray-04">{member.phone}</div>
-      )}
+    {/* md일때 */}
+    <div className="hidden md:block lg:hidden flex flex-row justify-center items-center ">
+      <div className="flex flex-row gap-x-[16px]">
+        <div className="flex w-[100px] h-[100px] rounded-full bg-[#D9D9D9] overflow-hidden shrink-0">
+          <img src={member.imgSrc} alt="" className=" object-cover" />
+        </div>
+        <div className="flex flex-col justify-center items-start">
+          <div className="title-20-semibold lg:text-center text-start text-gray-01">
+            {member.name}
+          </div>
+          <div className="flex flex-col gap-[4px] lg:text-center text-start">
+            <div className="body-16-regular text-gray-04 leading-tight">
+              {member.major}
+            </div>
+            {member.phone && (
+              <div className="body-16-regular text-gray-04 leading-tight">
+                {member.phone}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
+    {/* --- 3. Large 전용 (이미지 아래에 텍스트, 중앙 정렬) --- */}
+    {/* ✅ 핵심: flex-col과 items-center를 주어 모든 요소를 수직 중앙으로 맞춥니다. */}
+    <div className="hidden lg:flex flex-col items-center gap-y-[16px] w-full">
+      <div className="w-[114px] h-[114px] rounded-full bg-[#D9D9D9] overflow-hidden shrink-0">
+        <img
+          src={member.imgSrc}
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="flex flex-col items-center gap-y-[8px]">
+        <div className="title-20-semibold text-center text-gray-01">
+          {member.name}
+        </div>
+        <div className="flex flex-col gap-[4px] text-center">
+          <div className="body-16-regular text-gray-04 leading-tight">
+            {member.major}
+          </div>
+          {member.phone && (
+            <div className="body-16-regular text-gray-04 leading-tight">
+              {member.phone}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>{' '}
   </div>
 );
 
@@ -34,7 +93,7 @@ const Manager = () => {
       {parts.map((parts, idx) => (
         <div
           key={idx}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-y-[64px] lg:gap-x-[112px]"
+          className="grid grid-cols-1 lg:grid-flow-col lg:grid-rows-2 gap-y-[64px] lg:gap-x-[112px]"
         >
           {parts.map((part) => (
             <div key={part} className="flex flex-col gap-[24px]">
