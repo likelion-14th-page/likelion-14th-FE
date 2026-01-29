@@ -2,12 +2,20 @@ import Manager from '../components/home/Manager';
 
 const Footer = ({ home = false }) => {
   return home === true ? (
-    /* 1. 배경을 담당하는 바깥쪽 Div (w-full) */
-    <footer className="w-full  bg-bg-secondary pt-[92px] pb-[141px]">
-      <div className="">
-        <div className="responsive-layout flex lg:flex-row flex-col gap-[120px] lg:justify-start lg:items-start ">
-          {/* 인스타그램 & 이메일 섹션 */}
-          <div className="flex flex-col lg:flex-col sm:flx-row gap-[64px] md:justify-start md:items-start sm:justify-end sm:items-end">
+    /* ✅ 1. 최상위 부모: 절대 화면 너비를 넘지 못하게 고정 */
+    <footer className="w-full bg-bg-secondary pt-[92px] pb-[141px] overflow-hidden">
+      {/* ✅ 2. 스크롤 컨테이너: 
+          - responsive-layout의 너비를 유지하면서 컨텐츠가 넘치면 스크롤 발생
+          - scrollbar-hide를 통해 시각적으로 깔끔하게 유지
+      */}
+      <div className="responsive-layout overflow-x-auto scrollbar-hide">
+        {/* ✅ 3. 실제 컨텐츠 래퍼: 
+            - min-w-max를 통해 내부 컨텐츠(Manager 등)가 찌그러지지 않고 본래 너비를 유지하게 함
+            - lg(데스크탑)에서는 다시 일반적인 flex 흐름으로 복구
+        */}
+        <div className="flex flex-col lg:flex-row gap-[64px] lg:gap-[120px] min-w-max lg:min-w-0 lg:w-full">
+          {/* 연락처 섹션: shrink-0으로 너비 보존 */}
+          <div className="flex flex-col gap-[64px] shrink-0">
             <div className="flex flex-col gap-[32px]">
               <div className="title-20-bold text-white">인스타그램</div>
               <div className="py-[8px] px-[24px] body-18-semibold text-white bg-gray-07 rounded-full w-fit">
@@ -22,16 +30,15 @@ const Footer = ({ home = false }) => {
             </div>
           </div>
 
-          {/* 운영진 정보 섹션 */}
-          <Manager />
+          {/* 운영진 정보 섹션: 내부 카드들이 211px 너비를 지키며 나열됨 */}
+          <div className="shrink-0">
+            <Manager />
+          </div>
         </div>
       </div>
     </footer>
   ) : (
-    /* Home이 아닐 때의 푸터 (여기도 중앙 정렬이 필요하다면 내부 div를 추가할 수 있습니다) */
-    <footer className="h-[464px] w-full bg-[radial-gradient(59.61%_59.61%_at_50%_100%,#6E2900_0%,#080300_100%)]">
-      {/* 필요 시 여기에 <div className="max-w-[1200px] mx-auto px-6"> ... </div> 추가 */}
-    </footer>
+    <footer className="h-[464px] w-full bg-[radial-gradient(59.61%_59.61%_at_50%_100%,#6E2900_0%,#080300_100%)]"></footer>
   );
 };
 

@@ -194,12 +194,12 @@
     @apply text-[120px] font-bold leading-[120%];
   }
 
-  .title-80-semibold {
-    @apply text-[80px] font-semibold leading-[130%];
-  }
-
   .title-64-bold {
     @apply text-[64px] font-bold leading-[120%];
+  }
+
+  .title-80-semibold {
+    @apply text-[80px] font-semibold leading-[130%];
   }
 
   .title-48-semibold {
