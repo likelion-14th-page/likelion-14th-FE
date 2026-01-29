@@ -9,26 +9,44 @@ export default function Events() {
       events: [
         { title: 'OT', date: '3월 10일', isDisabled: false },
         { title: 'MT', date: '3월 13일 ~ 14일', isDisabled: false },
-        { title: '세션 진행', date: '3월 19일', isDisabled: false },
-        { title: '세션 진행', date: '3월 26일', isDisabled: false },
+        { title: <span className="break-keep inline-block leading-tight">
+            세션 진행
+          </span>, date: '3월 19일', isDisabled: false },
+        { title: <span className="break-keep inline-block leading-tight">
+            세션 진행
+          </span>, date: '3월 26일', isDisabled: false },
       ],
     },
     {
       month: '4월',
       events: [
-        { title: '세션 진행', date: '4월 2일', isDisabled: false },
-        { title: '세션 진행', date: '4월 9일', isDisabled: false },
+        { title: <span className="break-keep inline-block leading-tight">
+            세션 진행
+          </span>, date: '4월 2일', isDisabled: false },
+        { title: <span className="break-keep inline-block leading-tight">
+            세션 진행
+          </span>, date: '4월 9일', isDisabled: false },
         { title: '휴회', date: '중간고사 기간', isDisabled: true },
-        { title: '세션 진행', date: '4월 30일', isDisabled: false },
+        { title: <span className="break-keep inline-block leading-tight">
+            세션 진행
+          </span>, date: '4월 30일', isDisabled: false },
       ],
     },
     {
       month: '5월',
       events: [
-        { title: '세션 진행', date: '5월 7일', isDisabled: false },
-        { title: '세션 진행', date: '5월 14일', isDisabled: false },
-        { title: '기획/디자인 발표', date: '5월 21일', isDisabled: false },
-        { title: '해커톤 팀빌딩', date: '5월 28일', isDisabled: false },
+        { title: <span className="break-keep inline-block leading-tight">
+            세션 진행
+          </span>, date: '5월 7일', isDisabled: false },
+        { title: <span className="break-keep inline-block leading-tight">
+            세션 진행
+          </span>, date: '5월 14일', isDisabled: false },
+        { title: <span className="break-keep inline-block leading-tight">
+            기획/디자인 발표
+          </span>, date: '5월 21일', isDisabled: false },
+        { title: (<span className="break-keep inline-block leading-tight">
+            해커톤 팀빌딩
+          </span>), date: '5월 28일', isDisabled: false },
       ],
     },
     {
@@ -45,7 +63,9 @@ export default function Events() {
       month: '7월',
       events: [
         { title: '애거돈', date: '추후 공지', isDisabled: false },
-        { title: '방학 세션 진행', date: '추후 공지', isDisabled: false, colSpan: 3 },
+        { title: <span className="break-keep inline-block leading-tight">
+            방학 세션 진행
+          </span>, date: '추후 공지', isDisabled: false, colSpan: 3 },
       ],
     },
     {
@@ -65,7 +85,11 @@ export default function Events() {
     {
       month: '10월',
       events: [
-        { title: '데모데이 준비 및 점검', date: '팀별 개별 미팅', isDisabled: false, colSpan: 4 },
+        { title: (
+          <span className="break-keep inline-block leading-tight">
+            데모데이 준비 및 점검
+          </span>), 
+          date: '팀별 개별 미팅', isDisabled: false, colSpan: 4 },
       ],
     },
     {
