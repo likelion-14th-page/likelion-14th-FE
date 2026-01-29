@@ -1,11 +1,27 @@
 import { useState } from 'react';
 import ProjectCard from '../components/archive/ProjectCard';
 import PaginationButton from '../components/archive/PaginationButton';
-import a1 from '../assets/archive/hackathon/a1.png';
-import b1 from '../assets/archive/hackathon/b1.png';
-import c1 from '../assets/archive/hackathon/c1.png';
-import d1 from '../assets/archive/hackathon/d1.jpg';
-import e1 from '../assets/archive/hackathon/e1.png';
+// 해커톤
+import hackathon_a1 from '../assets/archive/hackathon/a1.png';
+import hackathon_b1 from '../assets/archive/hackathon/b1.png';
+import hackathon_c1 from '../assets/archive/hackathon/c1.png';
+import hackathon_d1 from '../assets/archive/hackathon/d1.jpg';
+import hackathon_e1 from '../assets/archive/hackathon/e1.png';
+
+// 데모데이
+import demoday_a1 from '../assets/archive/demoday/a1.png';
+import demoday_b1 from '../assets/archive/demoday/b1.png';
+import demoday_c1 from '../assets/archive/demoday/c1.png';
+import demoday_d1 from '../assets/archive/demoday/d1.png';
+import demoday_e1 from '../assets/archive/demoday/e1.jpg';
+
+// 아이디어톤
+import ideathon_a1 from '../assets/archive/ideathon/a1.jpg';
+import ideathon_b1 from '../assets/archive/ideathon/b1.jpg';
+import ideathon_c1 from '../assets/archive/ideathon/c1.jpg';
+import ideathon_d1 from '../assets/archive/ideathon/d1.jpg';
+import ideathon_e1 from '../assets/archive/ideathon/e1.jpg';
+import ideathon_f1 from '../assets/archive/ideathon/f1.jpg';
 
 const Archive = () => {
     const [selectedFilter, setSelectedFilter] = useState('전체');
@@ -15,46 +31,103 @@ const Archive = () => {
 
     // 프로젝트 데이터
     const projects = [
+        // 해커톤
         {
-            image: a1,
+            image: hackathon_a1,
             category: '해커톤',
             title: '프로젝트 A',
             subtitle: '서비스'
         },
         {
-            image: b1,
+            image: hackathon_b1,
             category: '해커톤',
             title: '프로젝트 B',
             subtitle: '서비스'
         },
         {
-            image: c1,
+            image: hackathon_c1,
             category: '해커톤',
             title: '프로젝트 C',
             subtitle: '서비스'
         },
         {
-            image: d1,
+            image: hackathon_d1,
             category: '해커톤',
             title: '프로젝트 D',
             subtitle: '서비스'
         },
         {
-            image: e1,
+            image: hackathon_e1,
             category: '해커톤',
             title: '프로젝트 E',
             subtitle: '서비스'
         },
+        // 데모데이
         {
-            image: e1,
-            category: '해커톤',
+            image: demoday_a1,
+            category: '데모데이',
+            title: '프로젝트 A',
+            subtitle: '서비스'
+        },
+        {
+            image: demoday_b1,
+            category: '데모데이',
+            title: '프로젝트 B',
+            subtitle: '서비스'
+        },
+        {
+            image: demoday_c1,
+            category: '데모데이',
+            title: '프로젝트 C',
+            subtitle: '서비스'
+        },
+        {
+            image: demoday_d1,
+            category: '데모데이',
+            title: '프로젝트 D',
+            subtitle: '서비스'
+        },
+        {
+            image: demoday_e1,
+            category: '데모데이',
+            title: '프로젝트 E',
+            subtitle: '서비스'
+        },
+        // 아이디어톤
+        {
+            image: ideathon_a1,
+            category: '아이디어톤',
+            title: '프로젝트 A',
+            subtitle: '서비스'
+        },
+        {
+            image: ideathon_b1,
+            category: '아이디어톤',
+            title: '프로젝트 B',
+            subtitle: '서비스'
+        },
+        {
+            image: ideathon_c1,
+            category: '아이디어톤',
+            title: '프로젝트 C',
+            subtitle: '서비스'
+        },
+        {
+            image: ideathon_d1,
+            category: '아이디어톤',
+            title: '프로젝트 D',
+            subtitle: '서비스'
+        },
+        {
+            image: ideathon_e1,
+            category: '아이디어톤',
             title: '프로젝트 E',
             subtitle: '서비스'
         },
         {
-            image: e1,
-            category: 'ㄴ',
-            title: '프로젝트 E',
+            image: ideathon_f1,
+            category: '아이디어톤',
+            title: '프로젝트 F',
             subtitle: '서비스'
         }
     ];
