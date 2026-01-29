@@ -35,7 +35,7 @@ const Layout = () => {
   const currentHeader = headerConfig[location.pathname];
 
   return (
-    <div className="w-full min-h-screen bg-bg-dark ">
+    <div className="w-full min-h-screen bg-bg-dark overflow-x-hidden">
       {/* 1. 네브바 고정 영역 */}
       <div className="fixed top-0 left-0 w-full z-50 bg-bg-dark">
         <Navbar />
