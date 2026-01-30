@@ -1,5 +1,8 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 
+// 슬라이더 손잡이
+import handleIcon from '../../assets/archive/handle.svg';
+
 // 활동 사진 import
 import img1 from '../../assets/archive/activityimg/1.jpg';
 import img2 from '../../assets/archive/activityimg/2.jpg';
@@ -29,7 +32,7 @@ const ActivityGallery = () => {
     const wrapperRef = useRef(null);
 
     const totalImages = images.length;
-    const gap = 20;
+    const gap = 10;
 
     // 반응형 크기 계산
     useEffect(() => {
@@ -150,7 +153,7 @@ const ActivityGallery = () => {
             {/* 이미지 컨테이너 */}
             <div
                 ref={containerRef}
-                className="flex gap-[20px] overflow-x-auto scrollbar-hide"
+                className="flex gap-[10px] overflow-x-auto scrollbar-hide"
                 onScroll={handleScroll}
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
@@ -172,7 +175,7 @@ const ActivityGallery = () => {
             <div className="mt-[50px]">
                 <div
                     ref={sliderRef}
-                    className="relative h-2 bg-[#2D2D2D] rounded-full cursor-pointer"
+                    className="relative h-0.5 bg-[#2D2D2D] rounded-full cursor-pointer"
                     style={{ width: sliderWidth }}
                     onMouseDown={handleMouseDown}
                     onTouchStart={handleTouchStart}
@@ -181,16 +184,19 @@ const ActivityGallery = () => {
                 >
                     {/* 채워진 부분 */}
                     <div
-                        className="absolute top-0 left-0 h-full bg-[#DABE5A] rounded-full transition-all duration-75"
+                        className="absolute top-0 left-0 h-full bg-white rounded-full transition-all duration-75"
                         style={{ width: `${Math.min(handlePosition, 100)}%` }}
                     />
 
                     {/* 손잡이 */}
-                    <div
-                        className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-[#DABE5A] rounded-full shadow-lg transition-transform duration-75 ${
+                    <img
+                        src={handleIcon}
+                        alt="slider handle"
+                        className={`absolute top-1/2 -translate-y-1/2 transition-transform duration-75 ${
                             isDragging ? 'scale-125' : 'hover:scale-110'
                         }`}
-                        style={{ left: `calc(${Math.min(handlePosition, 100)}% - 10px)` }}
+                        style={{ left: `calc(${Math.min(handlePosition, 100)}% - 10px)`, width: '20px', height: '20px' }}
+                        draggable={false}
                     />
                 </div>
             </div>

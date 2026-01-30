@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
+// 슬라이더 손잡이
+import handleIcon from '../../assets/archive/handle.svg';
+
 const ProjectModal = ({ isOpen, onClose, project }) => {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
@@ -11,7 +14,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
 
     const IMAGE_WIDTH = 467;
     const IMAGE_HEIGHT = 267;
-    const IMAGE_GAP = 13;
+    const IMAGE_GAP = 1;
     const totalWidth = (IMAGE_WIDTH + IMAGE_GAP) * totalImages - IMAGE_GAP;
 
     // 슬라이더 위치 계산
@@ -182,7 +185,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                 >
                     <div
                         ref={sliderRef}
-                        className="relative h-2 bg-[#515154] rounded-full cursor-pointer"
+                        className="relative h-0.5 bg-[#515154] rounded-full cursor-pointer"
                         onMouseDown={handleMouseDown}
                         onTouchStart={handleTouchStart}
                         onTouchMove={handleTouchMove}
@@ -190,16 +193,19 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                     >
                         {/* 채워진 부분 */}
                         <div
-                            className="absolute top-0 left-0 h-full bg-[#DABE5A] rounded-full transition-all duration-75"
+                            className="absolute top-0 left-0 h-full bg-white rounded-full transition-all duration-75"
                             style={{ width: `${Math.min(handlePosition, 100)}%` }}
                         />
 
                         {/* 손잡이 */}
-                        <div
-                            className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-[#DABE5A] rounded-full shadow-lg transition-transform duration-75 ${
+                        <img
+                            src={handleIcon}
+                            alt="slider handle"
+                            className={`absolute top-1/2 -translate-y-1/2 transition-transform duration-75 ${
                                 isDragging ? 'scale-125' : 'hover:scale-110'
                             }`}
-                            style={{ left: `calc(${Math.min(handlePosition, 100)}% - 10px)` }}
+                            style={{ left: `calc(${Math.min(handlePosition, 100)}% - 10px)`, width: '20px', height: '20px' }}
+                            draggable={false}
                         />
                     </div>
                 </div>
@@ -210,21 +216,21 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                     className="absolute overflow-x-auto"
                     style={{
                         top: '279px',
-                        left: '95px',
-                        width: '467px',
+                        left: '0',
+                        width: '657px',
                         height: '267px',
                         scrollbarWidth: 'none',
                         msOverflowStyle: 'none',
                     }}
                     onScroll={handleScroll}
                 >
-                    <div className="flex gap-[20px]" style={{ width: 'max-content' }}>
+                    <div className="flex gap-[1px]" style={{ width: 'max-content' }}>
                         {images.map((src, index) => (
                             <img
                                 key={index}
                                 src={src}
                                 alt={`${project.title} - ${index + 1}`}
-                                className="flex-shrink-0 rounded-xl object-cover"
+                                className="flex-shrink-0 object-cover"
                                 style={{ width: `${IMAGE_WIDTH}px`, height: `${IMAGE_HEIGHT}px` }}
                                 draggable={false}
                             />
