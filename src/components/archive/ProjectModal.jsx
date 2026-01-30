@@ -1,28 +1,46 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 const ProjectModal = ({ isOpen, onClose, project }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [scrollPosition, setScrollPosition] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
     const sliderRef = useRef(null);
+    const imagesContainerRef = useRef(null);
 
     const images = project?.images || [];
     const totalImages = images.length;
 
+    const IMAGE_WIDTH = 467;
+    const IMAGE_HEIGHT = 267;
+    const IMAGE_GAP = 13;
+    const totalWidth = (IMAGE_WIDTH + IMAGE_GAP) * totalImages - IMAGE_GAP;
+
     // 슬라이더 위치 계산
     const handleSliderInteraction = useCallback((clientX) => {
-        if (!sliderRef.current || totalImages <= 1) return;
+        if (!sliderRef.current || !imagesContainerRef.current) return;
 
         const rect = sliderRef.current.getBoundingClientRect();
         const x = clientX - rect.left;
         const percentage = Math.max(0, Math.min(1, x / rect.width));
-        const newIndex = Math.round(percentage * (totalImages - 1));
-        setCurrentIndex(newIndex);
-    }, [totalImages]);
+
+        const containerWidth = imagesContainerRef.current.offsetWidth;
+        const maxScroll = Math.max(totalWidth - containerWidth, 0);
+        const newScroll = percentage * maxScroll;
+
+        setScrollPosition(newScroll);
+        imagesContainerRef.current.scrollLeft = newScroll;
+    }, [totalWidth]);
+
+    // 스크롤 이벤트 핸들러
+    const handleScroll = () => {
+        if (imagesContainerRef.current && !isDragging) {
+            setScrollPosition(imagesContainerRef.current.scrollLeft);
+        }
+    };
 
     // 모달 열릴 때 초기화
     useEffect(() => {
         if (isOpen) {
-            setCurrentIndex(0);
+            setScrollPosition(0);
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
@@ -32,17 +50,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
         };
     }, [isOpen]);
 
-    // ESC 키로 닫기
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (!isOpen) return;
-            if (e.key === 'Escape') onClose();
-        };
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [isOpen, onClose]);
-
-    // 전역 마우스 이벤트 (드래그 중 슬라이더 밖으로 나가도 동작)
+    // 전역 마우스 이벤트
     useEffect(() => {
         if (!isDragging) return;
 
@@ -83,76 +91,146 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
     };
 
     // 손잡이 위치 계산 (%)
-    const handlePosition = totalImages > 1 ? (currentIndex / (totalImages - 1)) * 100 : 0;
+    const containerWidth = imagesContainerRef.current?.offsetWidth || 800;
+    const maxScroll = Math.max(totalWidth - containerWidth, 1);
+    const handlePosition = (scrollPosition / maxScroll) * 100;
 
     return (
         <div
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85"
             onClick={onClose}
         >
+            {/* 모달 컨테이너 */}
             <div
-                className="relative w-full max-w-[900px] mx-4"
+                className="relative"
+                style={{
+                    width: '657px',
+                    height: '571px',
+                    borderRadius: '11px',
+                    border: '1px solid #515154',
+                    background: '#2D2D2D',
+                }}
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* 닫기 버튼 */}
                 <button
                     onClick={onClose}
-                    className="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 transition-colors cursor-pointer"
+                    className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-colors cursor-pointer"
                 >
                     ✕
                 </button>
 
-                {/* 이미지 영역 */}
-                <div className="relative overflow-hidden rounded-2xl bg-[#1C1C1C]">
-                    <div className="relative aspect-video">
-                        <img
-                            src={images[currentIndex]}
-                            alt={`${project.title} - ${currentIndex + 1}`}
-                            className="w-full h-full object-contain"
-                            draggable={false}
+                {/* 카테고리 */}
+                <p
+                    className="absolute body-14-regular text-gray-02"
+                    style={{ top: '27px', left: '53px' }}
+                >
+                    {project.category}
+                </p>
+
+                {/* 서비스 이름 */}
+                <h2
+                    className="absolute title-32-semibold text-white"
+                    style={{ top: '54px', left: '53px' }}
+                >
+                    {project.title}
+                </h2>
+
+                {/* 서비스 설명 */}
+                <p
+                    className="absolute body-18-regular text-gray-02"
+                    style={{ top: '96px', left: '53px', maxWidth: '551px' }}
+                >
+                    {project.subtitle}
+                </p>
+
+                {/* 팀원 정보 */}
+                <div className="absolute" style={{ top: '153px', left: '450px' }}>
+                    {/* 기획/디자인 */}
+                    <div className="flex items-center">
+                        <span className="body-16-semibold text-gray-04" style={{ width: '85px' }}>기획/디자인</span>
+                        <span className="body-16-regular text-gray-02 ml-[20px]">
+                            {project.designer || '이름'}
+                        </span>
+                    </div>
+
+                    {/* 프론트엔드 */}
+                    <div className="flex items-center mt-[15px]">
+                        <span className="body-16-semibold text-gray-04" style={{ width: '85px' }}>프론트엔드</span>
+                        <span className="body-16-regular text-gray-02 ml-[20px]">
+                            {project.frontend || '이름'}
+                        </span>
+                    </div>
+
+                    {/* 백엔드 */}
+                    <div className="flex items-center mt-[15px]">
+                        <span className="body-16-semibold text-gray-04" style={{ width: '85px' }}>백엔드</span>
+                        <span className="body-16-regular text-gray-02 ml-[20px]">
+                            {project.backend || '이름'}
+                        </span>
+                    </div>
+                </div>
+
+                {/* 슬라이더 바 */}
+                <div
+                    className="absolute mt-[10px]"
+                    style={{
+                        top: '253px',
+                        left: '62px',
+                        width: '533px',
+                    }}
+                >
+                    <div
+                        ref={sliderRef}
+                        className="relative h-2 bg-[#515154] rounded-full cursor-pointer"
+                        onMouseDown={handleMouseDown}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                    >
+                        {/* 채워진 부분 */}
+                        <div
+                            className="absolute top-0 left-0 h-full bg-[#DABE5A] rounded-full transition-all duration-75"
+                            style={{ width: `${Math.min(handlePosition, 100)}%` }}
+                        />
+
+                        {/* 손잡이 */}
+                        <div
+                            className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-[#DABE5A] rounded-full shadow-lg transition-transform duration-75 ${
+                                isDragging ? 'scale-125' : 'hover:scale-110'
+                            }`}
+                            style={{ left: `calc(${Math.min(handlePosition, 100)}% - 10px)` }}
                         />
                     </div>
                 </div>
 
-                {/* 프로젝트 정보 */}
-                <div className="mt-4 text-center">
-                    <p className="text-gray-400 text-sm mb-1">{project.category}</p>
-                    <h3 className="text-white text-xl font-semibold">{project.title}</h3>
-                </div>
-
-                {/* 슬라이더 바 */}
-                {totalImages > 1 && (
-                    <div className="mt-6 px-4">
-                        {/* 이미지 번호 표시 */}
-                        <p className="text-center text-gray-400 text-sm mb-3">
-                            {currentIndex + 1} / {totalImages}
-                        </p>
-
-                        {/* 슬라이더 트랙 */}
-                        <div
-                            ref={sliderRef}
-                            className="relative h-2 bg-[#2D2D2D] rounded-full cursor-pointer"
-                            onMouseDown={handleMouseDown}
-                            onTouchStart={handleTouchStart}
-                            onTouchMove={handleTouchMove}
-                            onTouchEnd={handleTouchEnd}
-                        >
-                            {/* 채워진 부분 */}
-                            <div
-                                className="absolute top-0 left-0 h-full bg-[#DABE5A] rounded-full transition-all duration-75"
-                                style={{ width: `${handlePosition}%` }}
+                {/* 이미지 갤러리 */}
+                <div
+                    ref={imagesContainerRef}
+                    className="absolute overflow-x-auto"
+                    style={{
+                        top: '279px',
+                        left: '95px',
+                        width: '467px',
+                        height: '267px',
+                        scrollbarWidth: 'none',
+                        msOverflowStyle: 'none',
+                    }}
+                    onScroll={handleScroll}
+                >
+                    <div className="flex gap-[20px]" style={{ width: 'max-content' }}>
+                        {images.map((src, index) => (
+                            <img
+                                key={index}
+                                src={src}
+                                alt={`${project.title} - ${index + 1}`}
+                                className="flex-shrink-0 rounded-xl object-cover"
+                                style={{ width: `${IMAGE_WIDTH}px`, height: `${IMAGE_HEIGHT}px` }}
+                                draggable={false}
                             />
-
-                            {/* 손잡이 */}
-                            <div
-                                className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-[#DABE5A] rounded-full shadow-lg transition-transform duration-75 ${
-                                    isDragging ? 'scale-125' : 'hover:scale-110'
-                                }`}
-                                style={{ left: `calc(${handlePosition}% - 10px)` }}
-                            />
-                        </div>
+                        ))}
                     </div>
-                )}
+                </div>
             </div>
         </div>
     );

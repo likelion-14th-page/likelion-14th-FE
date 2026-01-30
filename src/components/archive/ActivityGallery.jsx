@@ -22,13 +22,63 @@ const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img
 const ActivityGallery = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
+    const [imageSize, setImageSize] = useState({ width: 500, height: 360 });
+    const [sliderWidth, setSliderWidth] = useState('100%');
     const sliderRef = useRef(null);
     const containerRef = useRef(null);
+    const wrapperRef = useRef(null);
 
     const totalImages = images.length;
-    const imageWidth = 560;
     const gap = 20;
-    const totalWidth = (imageWidth + gap) * totalImages - gap;
+
+    // 반응형 크기 계산
+    useEffect(() => {
+        const calculateSizes = () => {
+            const screenWidth = window.innerWidth;
+
+            // 이미지 크기 계산 (화면 크기에 따라 조절)
+            let imgWidth, imgHeight;
+            if (screenWidth >= 1440) {
+                imgWidth = 500;
+                imgHeight = 360;
+            } else if (screenWidth >= 1024) {
+                imgWidth = 400;
+                imgHeight = 288;
+            } else if (screenWidth >= 600) {
+                imgWidth = 320;
+                imgHeight = 230;
+            } else {
+                imgWidth = 280;
+                imgHeight = 200;
+            }
+            setImageSize({ width: imgWidth, height: imgHeight });
+
+            // 슬라이더 너비 계산 (responsive-layout 콘텐츠 영역에 맞춤)
+            let contentWidth;
+            if (screenWidth >= 1440) {
+                contentWidth = 1140;
+            } else if (screenWidth >= 1024) {
+                // padding: clamp(100px, 4.8vw+50px, 120px) 양쪽
+                const padding = Math.min(120, Math.max(100, screenWidth * 0.048 + 50));
+                contentWidth = screenWidth - padding * 2;
+            } else if (screenWidth >= 600) {
+                // padding: clamp(40px, 8vw, 80px) 양쪽
+                const padding = Math.min(80, Math.max(40, screenWidth * 0.08));
+                contentWidth = screenWidth - padding * 2;
+            } else {
+                // padding: 24px 양쪽
+                contentWidth = screenWidth - 48;
+            }
+            setSliderWidth(`${contentWidth}px`);
+        };
+
+        calculateSizes();
+        window.addEventListener('resize', calculateSizes);
+        return () => window.removeEventListener('resize', calculateSizes);
+    }, []);
+
+    const spacerWidth = 500;
+    const totalWidth = (imageSize.width + gap) * totalImages + spacerWidth;
 
     // 슬라이더 위치 계산
     const handleSliderInteraction = useCallback((clientX) => {
@@ -96,7 +146,7 @@ const ActivityGallery = () => {
     const handlePosition = (scrollPosition / maxScroll) * 100;
 
     return (
-        <div className="w-full">
+        <div className="w-full" ref={wrapperRef}>
             {/* 이미지 컨테이너 */}
             <div
                 ref={containerRef}
@@ -110,12 +160,12 @@ const ActivityGallery = () => {
                         src={src}
                         alt={`활동사진 ${index + 1}`}
                         className="flex-shrink-0 rounded-2xl object-cover"
-                        style={{ width: '500px', height: '360px' }}
+                        style={{ width: `${imageSize.width}px`, height: `${imageSize.height}px` }}
                         draggable={false}
                     />
                 ))}
                 {/* 마지막 사진이 다 보이도록 여백 추가 */}
-                <div className="flex-shrink-0 w-[180px]" />
+                <div className="flex-shrink-0 w-[200px]" />
             </div>
 
             {/* 슬라이더 바 */}
@@ -123,7 +173,7 @@ const ActivityGallery = () => {
                 <div
                     ref={sliderRef}
                     className="relative h-2 bg-[#2D2D2D] rounded-full cursor-pointer"
-                    style={{ width: '1100px' }}
+                    style={{ width: sliderWidth }}
                     onMouseDown={handleMouseDown}
                     onTouchStart={handleTouchStart}
                     onTouchMove={handleTouchMove}

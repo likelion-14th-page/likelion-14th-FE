@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ProjectCard from '../components/archive/ProjectCard';
 import PaginationButton from '../components/archive/PaginationButton';
 import ProjectModal from '../components/archive/ProjectModal';
@@ -154,9 +154,28 @@ const Archive = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
+    const [paginationWidth, setPaginationWidth] = useState('100%');
+    const cardsContainerRef = useRef(null);
 
     const filters = ['전체', '아이디어톤', '해커톤', '데모데이'];
     const ITEMS_PER_PAGE = 6;
+    const CARD_WIDTH = 360;
+    const CARD_GAP = 20;
+
+    // 카드 개수에 맞춰 페이지네이션 너비 계산
+    useEffect(() => {
+        const calculateWidth = () => {
+            if (!cardsContainerRef.current) return;
+            const containerWidth = cardsContainerRef.current.offsetWidth;
+            const cardsPerRow = Math.floor((containerWidth + CARD_GAP) / (CARD_WIDTH + CARD_GAP));
+            const actualCardsWidth = cardsPerRow * CARD_WIDTH + (cardsPerRow - 1) * CARD_GAP;
+            setPaginationWidth(`${actualCardsWidth}px`);
+        };
+
+        calculateWidth();
+        window.addEventListener('resize', calculateWidth);
+        return () => window.removeEventListener('resize', calculateWidth);
+    }, []);
 
     // 프로젝트 데이터
     const projects = [
@@ -349,7 +368,10 @@ const Archive = () => {
             </h2>
 
             {/* 프로젝트 카드 목록 */}
-            <div className="mt-8 flex flex-wrap justify-start gap-x-[20px] gap-y-[24px] mx-auto">
+            <div
+                ref={cardsContainerRef}
+                className="mt-8 flex flex-wrap justify-start gap-x-[20px] gap-y-[24px] mx-auto"
+            >
                 {currentProjects.map((project, index) => (
                     <ProjectCard
                         key={index}
@@ -362,9 +384,9 @@ const Archive = () => {
                 ))}
             </div>
 
-            {/* 페이지네이션 */}
+            {/* 페이지네이션 - 카드 너비에 맞춤 */}
             {totalPages > 1 && (
-                <div className="mt-[24px] flex justify-between">
+                <div className="mt-[24px] flex justify-between" style={{ width: paginationWidth }}>
                     <PaginationButton
                         direction="prev"
                         onClick={handlePrevPage}
