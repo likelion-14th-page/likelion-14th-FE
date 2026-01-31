@@ -151,24 +151,24 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                 <div className="absolute" style={{ top: '153px', left: '400px' }}>
                     {/* 기획/디자인 */}
                     <div className="flex items-center">
-                        <span className="body-16-semibold text-gray-04" style={{ width: '85px' }}>기획/디자인</span>
-                        <span className="body-16-regular text-gray-02 ml-[20px]">
+                        <span className="body-14-semibold text-gray-04" style={{ width: '85px' }}>기획/디자인</span>
+                        <span className="body-14-regular text-gray-02 ml-[20px]">
                             {project.designer || '이름'}
                         </span>
                     </div>
 
                     {/* 프론트엔드 */}
                     <div className="flex items-center mt-[15px]">
-                        <span className="body-16-semibold text-gray-04" style={{ width: '85px' }}>프론트엔드</span>
-                        <span className="body-16-regular text-gray-02 ml-[20px]">
+                        <span className="body-14-semibold text-gray-04" style={{ width: '85px' }}>프론트엔드</span>
+                        <span className="body-14-regular text-gray-02 ml-[20px]">
                             {project.frontend || '이름'}
                         </span>
                     </div>
 
                     {/* 백엔드 */}
                     <div className="flex items-center mt-[15px]">
-                        <span className="body-16-semibold text-gray-04" style={{ width: '85px' }}>백엔드</span>
-                        <span className="body-16-regular text-gray-02 ml-[20px]">
+                        <span className="body-14-semibold text-gray-04" style={{ width: '85px' }}>백엔드</span>
+                        <span className="body-14-regular text-gray-02 ml-[20px]">
                             {project.backend || '이름'}
                         </span>
                     </div>
