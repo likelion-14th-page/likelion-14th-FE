@@ -77,65 +77,70 @@ const Archive = () => {
 
     return (
         <div className="mt-[5px]">
-            {/* 필터바 */}
-            <div className="flex justify-start items-center gap-[10px] mb-8">
-                {filters.map((filter) => (
-                    <button
-                        key={filter}
-                        onClick={() => handleFilterChange(filter)}
-                        className={`
-                            cursor-pointer
-                            flex justify-center items-center
-                            px-4 py-3
-                            body-18-regular
-                            transition-all
-                            ${selectedFilter === filter
-                                ? 'text-white rounded-[8px] border-b border-[#DABE5A]'
-                                : 'text-gray-02'
-                            }
-                        `}
+            {/* 프로젝트 섹션 - 중앙 정렬 wrapper */}
+            <div className="flex justify-center w-full">
+                <div className="w-full max-w-[1120px] flex flex-col">
+                    {/* 필터바 */}
+                    <div className="flex justify-start items-center gap-[10px] mb-8">
+                        {filters.map((filter) => (
+                            <button
+                                key={filter}
+                                onClick={() => handleFilterChange(filter)}
+                                className={`
+                                    cursor-pointer
+                                    flex justify-center items-center
+                                    px-4 py-3
+                                    body-18-regular
+                                    transition-all
+                                    ${selectedFilter === filter
+                                        ? 'text-white rounded-[8px] border-b border-[#DABE5A]'
+                                        : 'text-gray-02'
+                                    }
+                                `}
+                            >
+                                {filter}
+                            </button>
+                        ))}
+                    </div>
+
+                    <h2 className="mt-[64px] title-20-bold text-white">
+                        프로젝트
+                    </h2>
+
+                    {/* 프로젝트 카드 목록 */}
+                    <div
+                        ref={cardsContainerRef}
+                        className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[20px] gap-y-[24px]"
                     >
-                        {filter}
-                    </button>
-                ))}
-            </div>
+                        {currentProjects.map((project, index) => (
+                            <ProjectCard
+                                key={index}
+                                image={project.image}
+                                category={project.category}
+                                title={project.title}
+                                subtitle={project.subtitle}
+                                onClick={() => handleProjectClick(project)}
+                            />
+                        ))}
+                    </div>
 
-            <h2 className="mt-[64px] title-20-bold text-white">
-                프로젝트
-            </h2>
-
-            {/* 프로젝트 카드 목록 */}
-            <div
-                ref={cardsContainerRef}
-                className="mt-8 flex flex-wrap justify-start gap-x-[20px] gap-y-[24px] mx-auto"
-            >
-                {currentProjects.map((project, index) => (
-                    <ProjectCard
-                        key={index}
-                        image={project.image}
-                        category={project.category}
-                        title={project.title}
-                        subtitle={project.subtitle}
-                        onClick={() => handleProjectClick(project)}
-                    />
-                ))}
-            </div>
-
-            {/* 페이지네이션 - 카드 너비에 맞춤 */}
-            {totalPages > 1 && (
-                <div className="mt-[24px] flex justify-between" style={{ width: paginationWidth }}>
-                    <PaginationButton
-                        direction="prev"
-                        onClick={handlePrevPage}
-                        disabled={currentPage === 1}
-                    />
-                    <PaginationButton
-                        direction="next"
-                        onClick={handleNextPage}
-                        disabled={currentPage === totalPages}
-                    />
+                    {/* 페이지네이션 */}
+                    {totalPages > 1 && (
+                        <div className="mt-[24px] flex justify-between w-full">
+                            <PaginationButton
+                                direction="prev"
+                                onClick={handlePrevPage}
+                                disabled={currentPage === 1}
+                            />
+                            <PaginationButton
+                                direction="next"
+                                onClick={handleNextPage}
+                                disabled={currentPage === totalPages}
+                            />
+                        </div>
+                    )}
                 </div>
-            )}
+            </div>
 
             {/* 프로젝트 모달 */}
             <ProjectModal

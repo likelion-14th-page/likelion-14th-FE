@@ -1,7 +1,7 @@
 const ProjectCard = ({ image, category, title, subtitle, onClick }) => {
     return (
         <div
-            className="flex w-[360px] p-4 flex-col items-start gap-[10px] rounded-2xl border border-[#2D2D2D] bg-[#1C1C1C] transition-all duration-300 hover:border-[#DABE5A] cursor-pointer"
+            className="flex w-full p-4 flex-col items-start gap-[10px] rounded-2xl border border-[#2D2D2D] bg-[#1C1C1C] transition-all duration-300 hover:border-[#DABE5A] cursor-pointer"
             onClick={onClick}
         >
             {/* 이미지 */}
