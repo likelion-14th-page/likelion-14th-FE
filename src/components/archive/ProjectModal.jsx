@@ -141,14 +141,14 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
 
                 {/* 서비스 설명 */}
                 <p
-                    className="absolute body-18-regular text-gray-02"
+                    className="absolute body-16-regular text-gray-02"
                     style={{ top: '96px', left: '53px', maxWidth: '551px' }}
                 >
                     {project.subtitle}
                 </p>
 
                 {/* 팀원 정보 */}
-                <div className="absolute" style={{ top: '153px', left: '450px' }}>
+                <div className="absolute" style={{ top: '153px', left: '400px' }}>
                     {/* 기획/디자인 */}
                     <div className="flex items-center">
                         <span className="body-16-semibold text-gray-04" style={{ width: '85px' }}>기획/디자인</span>
