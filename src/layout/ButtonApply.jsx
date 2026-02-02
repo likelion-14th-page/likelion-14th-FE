@@ -7,9 +7,16 @@ const ButtonApply = ({ type, className, onClick }) => {
   const long_footer =
     'pl-[32px] pr-[24px] py-[16px] title-20-bold text-gray-01 border-orange-04';
 
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe-JkjkeYMgmEsDl1L58oPv2hW0E5vCd1qXQzR9qqIbsLmeEQ/viewform";
+
+  const handleButtonClick = () => {
+    window.open(GOOGLE_FORM_URL, '_blank', 'noopener,noreferrer');
+    if (onClick) onClick();
+  }
+
   return (
     <button
-      onClick={onClick}
+      onClick={onClick || handleButtonClick}
       className={`
         flex justify-center items-center whitespace-nowrap rounded-full border-[1.5px] 
         bg-orange-01 hover:bg-orange-01-hover transition-colors duration-300 cursor-pointer
@@ -20,7 +27,7 @@ const ButtonApply = ({ type, className, onClick }) => {
       `}
     >
       {type === 'long_title' || type === 'long_footer' ? (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center" >
           <span>홍익대학교 멋사 14기 지원하기</span>
           <img
             src={arrow}
