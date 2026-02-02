@@ -4,30 +4,45 @@ import Navbar from '../../layout/Navbar';
 import CheckForm from './CheckForm';
 import PassResult from './PassResult';
 import FinalPassResult from './FinalPassResult';
-import FinalPendingResult from './FinalPendingResult'; 
+import FinalPendingResult from './FinalPendingResult';
 import FailResult from './FailResult';
 import bgCircle from '../../assets/apply/bg-circle.svg'; 
 
 const ApplyCheckPage = () => {
-  // 🗓️ 최종 합격 발표 기준일 (예: 3월 7일 10시)
-  const FINAL_RELEASE_DATE = new Date(2026, 2, 7, 10, 0, 0); 
-
-  // step 상태: 'input' | 'loading' | 'pass' | 'final_pass' | 'final_pending' | 'fail'
-  const [step, setStep] = useState('input');
+  // 🗓️ [설정] 날짜 상수 정의 (월은 0부터 시작: 2 = 3월)
   
+  // 1. 서류 합격 발표일: 3월 1일 오전 10시
+  const DOCUMENT_RELEASE_DATE = new Date(2026, 2, 1, 10, 0, 0);
+  
+  // 2. 최종 합격 발표일: 3월 5일 오후 6시
+  const FINAL_RELEASE_DATE = new Date(2026, 2, 5, 18, 0, 0); 
+
+  // 상태 관리
+  const [step, setStep] = useState('input');
   const [isError, setIsError] = useState(false);
   const [name, setName] = useState('');
   const [num, setNum] = useState('');
+  
+  // 결과 데이터
   const [applicantName, setApplicantName] = useState('');
   const [passInfo, setPassInfo] = useState(null);
   const [failType, setFailType] = useState('doc'); 
 
   const handleCheck = async () => {
+    // 1. 입력값 유효성 검사
     if (!name || !num) {
       alert("이름과 식별번호를 모두 입력해주세요.");
       return;
     }
 
+    // 현재 시간이 서류 발표일 이전인지 확인
+    const now = new Date();
+    if (now < DOCUMENT_RELEASE_DATE) {
+      alert("아직 합격자 조회 기간이 아닙니다.\n\n서류 결과 발표: 3월 1일 오전 10시");
+      return;
+    }
+
+    // 2. 로딩 시작
     setStep('loading');
     setIsError(false);
 
@@ -35,28 +50,23 @@ const ApplyCheckPage = () => {
       const data = await getApplicantResult(name, num);
       setApplicantName(data.studentName);
 
-      const now = new Date();
       const isFinalPeriod = now >= FINAL_RELEASE_DATE;
       
       if (isFinalPeriod) {
-        // [기간 2] 최종 발표 기간 (합격 / 보류 / 불합격)
+        // [기간 2] 최종 발표 기간 (3월 5일 18시 이후)
         
         if (data.finalResult === '합격') {
-          // 1. 최종 합격
           setTimeout(() => setStep('final_pass'), 1000);
-
         } else if (data.finalResult === '보류') {
-          // 2. 최종 보류 (예비)
           setTimeout(() => setStep('final_pending'), 1000);
-
         } else {
-          // 3. 최종 불합격
           setFailType('final');
           setTimeout(() => setStep('fail'), 1000);
         }
 
       } else {
-        // [기간 1] 서류 발표 기간 
+        // [기간 1] 서류 발표 기간 (3월 1일 10시 ~ 3월 5일 18시 전)
+        
         if (data.document === '합격') {
           setPassInfo({
             place: data.location,
@@ -83,7 +93,6 @@ const ApplyCheckPage = () => {
     setIsError(false);
     setApplicantName('');
   };
-
 
   return (
     <div className="relative w-full min-h-screen bg-bg-dark overflow-x-hidden">
@@ -113,25 +122,11 @@ const ApplyCheckPage = () => {
           </div>
         )}
 
-        {/* 1. 서류 합격 */}
-        {step === 'pass' && (
-          <PassResult name={applicantName} info={passInfo} />
-        )}
-
-        {/* 2. 최종 합격 */}
-        {step === 'final_pass' && (
-          <FinalPassResult name={applicantName} />
-        )}
-
-        {/* 3. 최종 보류 (신규) */}
-        {step === 'final_pending' && (
-          <FinalPendingResult name={applicantName} />
-        )}
-
-        {/* 4. 불합격 (서류/최종) */}
-        {step === 'fail' && (
-          <FailResult name={applicantName} onRetry={handleReset} type={failType} />
-        )}
+        {/* 결과 컴포넌트들 */}
+        {step === 'pass' && <PassResult name={applicantName} info={passInfo} />}
+        {step === 'final_pass' && <FinalPassResult name={applicantName} />}
+        {step === 'final_pending' && <FinalPendingResult name={applicantName} />}
+        {step === 'fail' && <FailResult name={applicantName} onRetry={handleReset} type={failType} />}
         
       </div>
     </div>
