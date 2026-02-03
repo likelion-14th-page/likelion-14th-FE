@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getApplicants } from '../../apis/admin/Admin'; // API import
+import { getApplicants, updateDocumentPass } from '../../apis/admin/Admin'; // API import
 import DashboardHeader from '../../components/admin/DashboardHeader';
 import TabFilter from '../../components/admin/TabFilter';
 import ApplicantList from '../../components/admin/ApplicantList';
@@ -8,7 +8,7 @@ import ApplicantList from '../../components/admin/ApplicantList';
 const AdminDashboardPage = () => {
   const navigate = useNavigate();
   const [currentTab, setCurrentTab] = useState('all');
-  const [applicants, setApplicants] = useState([]); // 초기값 빈 배열
+  const [applicants, setApplicants] = useState([]);
   const [loading, setLoading] = useState(false);
 
   // 🔄 데이터 불러오기
@@ -55,20 +55,31 @@ const AdminDashboardPage = () => {
       case '디자인': return 'Design';
       case '프론트엔드': return 'Frontend';
       case '백엔드': return 'Backend';
-      case '기획': return 'PM'; // API에 기획이 있다면
-      default: return 'Frontend'; // 기본값 혹은 에러 처리
+      default: return 'Frontend'; 
     }
   };
 
-  // 서류 합격 토글 함수 (API 연동 전이므로 UI 상태만 변경)
-  const handleDocToggle = (id) => {
-    setApplicants(prev => prev.map(app => 
-      app.id === id ? { ...app, isDocPass: !app.isDocPass } : app
-    ));
-    // TODO: 여기에 서류 합격 여부 수정 API 호출 추가 필요
+  const handleDocToggle = async (id) => {
+    const target = applicants.find(app => app.id === id);
+    if (!target) return;
+
+    const newCheckedState = !target.isDocPass; 
+
+    try {
+      await updateDocumentPass(id, newCheckedState);
+      
+      setApplicants(prev => prev.map(app => 
+        app.id === id ? { ...app, isDocPass: newCheckedState } : app
+      ));
+
+      console.log(`학생(ID:${id}) 서류 합격 상태 변경: ${newCheckedState}`);
+
+    } catch (error) {
+      console.error("서류 합격 상태 변경 실패:", error);
+      alert("상태 변경에 실패했습니다. 다시 시도해주세요.");
+    }
   };
 
-  // 탭 필터링 로직 (기존 유지)
   const filteredApplicants = applicants.filter(item => {
     if (currentTab === 'all') return true;
     if (currentTab === 'plan_design') return item.part === 'PM' || item.part === 'Design';

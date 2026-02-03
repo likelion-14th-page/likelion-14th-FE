@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getDocPassers } from '../../apis/admin/Admin'; // API import
+import { getDocPassers, updateMeetingInfo, updateFinalResult } from '../../apis/admin/Admin'; // API import
 import DashboardHeader from '../../components/admin/DashboardHeader';
 import TabFilter from '../../components/admin/TabFilter';
 import ApplicantList from '../../components/admin/ApplicantList';
@@ -63,17 +63,34 @@ const AdminFinalPage = () => {
       case '디자인': return 'Design';
       case '프론트엔드': return 'Frontend';
       case '백엔드': return 'Backend';
-      case '기획': return 'PM'; // (필요 시)
       default: return 'Frontend';
     }
   };
 
-  // 최종 합격 토글 핸들러
-  const handleFinalToggle = (id) => {
-    setApplicants(prev => prev.map(app => 
-      app.id === id ? { ...app, isFinalPass: !app.isFinalPass } : app
-    ));
-    // TODO: 실제 최종 합격 여부 수정 API 호출 필요
+  const handleFinalToggle = async (id) => {
+    // 1. 현재 변경하려는 지원자 찾기
+    const target = applicants.find(app => app.id === id);
+    if (!target) return;
+
+    // 2. 바꿀 상태 값 계산 (현재 상태의 반대)
+    const newCheckedState = !target.isFinalPass;
+
+    try {
+      // 3. API 호출 (PATCH)
+      await updateFinalResult(id, newCheckedState);
+      
+      // 4. 성공 시 화면 상태 업데이트
+      setApplicants(prev => prev.map(app => 
+        app.id === id ? { ...app, isFinalPass: newCheckedState } : app
+      ));
+
+      console.log(`학생(ID:${id}) 최종 합격 상태 변경: ${newCheckedState}`);
+
+    } catch (error) {
+      console.error("최종 합격 상태 변경 실패:", error);
+      alert("상태 변경에 실패했습니다. 다시 시도해주세요.");
+      // 실패 시 화면은 그대로 둠 (이미 바뀌지 않았으므로)
+    }
   };
 
   // 면접 정보 입력 핸들러
@@ -82,6 +99,24 @@ const AdminFinalPage = () => {
       app.id === id ? { ...app, [field]: value } : app
     ));
     // TODO: 면접 정보 수정 시 API 호출 필요할 수 있음 (혹은 일괄 저장)
+  };
+
+  const handleSaveMeeting = async (id, currentData) => {
+    try {
+      // API 요청 데이터 구조 맞추기
+      const requestBody = {
+        meetingDate: currentData.date,      
+        meetingTime: currentData.time,      
+        location: currentData.location      
+      };
+
+      await updateMeetingInfo(id, requestBody);
+      alert("면접 정보가 저장되었습니다.");
+      
+    } catch (error) {
+      console.error("면접 정보 저장 실패:", error);
+      alert("저장에 실패했습니다.");
+    }
   };
 
   // 화면 표시용 (탭 필터링 적용)
@@ -195,6 +230,7 @@ const AdminFinalPage = () => {
             applicants={filteredApplicants} 
             onToggle={handleFinalToggle} 
             onUpdate={handleInfoChange} 
+            onSave={handleSaveMeeting}
             type="final" 
           />
         )}

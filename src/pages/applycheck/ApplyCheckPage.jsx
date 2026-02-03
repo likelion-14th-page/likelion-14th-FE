@@ -14,7 +14,7 @@ const ApplyCheckPage = () => {
   // 1. 서류 합격 발표일: 3월 1일 오전 10시
   const DOCUMENT_RELEASE_DATE = new Date(2026, 2, 1, 10, 0, 0);
   
-  // 2. 최종 합격 발표일: 3월 5일 오후 10시
+  // 2. 최종 합격 발표일: 3월 7일 오후 10시
   const FINAL_RELEASE_DATE = new Date(2026, 2, 7, 10, 0, 0); 
 
   // 상태 관리
