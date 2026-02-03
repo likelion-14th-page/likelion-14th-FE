@@ -50,3 +50,15 @@ export const updateDocumentPass = async (studentId, isChecked) => {
   });
   return response.data;
 };
+
+// 서류 전형 결과 문자 발송 (전원)
+export const sendDocumentMessage = async () => {
+  const response = await instance.post('/api/admin/message/document');
+  return response.data;
+};
+
+// 최종 전형 결과 문자 발송 (전원)
+export const sendFinalMessage = async () => {
+  const response = await instance.post('/api/admin/message/final');
+  return response.data;
+};

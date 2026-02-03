@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getDocPassers, updateMeetingInfo, updateFinalResult } from '../../apis/admin/Admin'; // API import
+import { getDocPassers, updateMeetingInfo, updateFinalResult, sendDocumentMessage, sendFinalMessage } from '../../apis/admin/Admin'; // API import
 import DashboardHeader from '../../components/admin/DashboardHeader';
 import TabFilter from '../../components/admin/TabFilter';
 import ApplicantList from '../../components/admin/ApplicantList';
@@ -98,12 +98,10 @@ const AdminFinalPage = () => {
     setApplicants(prev => prev.map(app => 
       app.id === id ? { ...app, [field]: value } : app
     ));
-    // TODO: 면접 정보 수정 시 API 호출 필요할 수 있음 (혹은 일괄 저장)
   };
 
   const handleSaveMeeting = async (id, currentData) => {
     try {
-      // API 요청 데이터 구조 맞추기
       const requestBody = {
         meetingDate: currentData.date,      
         meetingTime: currentData.time,      
@@ -119,8 +117,6 @@ const AdminFinalPage = () => {
     }
   };
 
-  // 화면 표시용 (탭 필터링 적용)
-  // applicants 상태에는 이미 서류 합격자만 들어있음
   const filteredApplicants = applicants.filter(item => {
     if (currentTab === 'all') return true;
     if (currentTab === 'plan_design') return item.part === 'PM' || item.part === 'Design';
@@ -157,21 +153,30 @@ const AdminFinalPage = () => {
     setModalConfig(prev => ({ ...prev, isOpen: false }));
   };
 
-  // 4. 모달에서 [전송하기] 클릭 시 실행될 실제 로직
-  const handleConfirmSend = () => {
-    if (modalConfig.type === 'DOC') {
-      // TODO: 서류 합격 문자 API 호출
-      console.log("📨 서류 합격 문자 발송 완료");
-      alert("서류 합격 문자가 발송되었습니다.");
-    } 
-    else if (modalConfig.type === 'FINAL') {
-      // TODO: 최종 합격 문자 API 호출
-      console.log("📨 최종 합격 문자 발송 완료");
-      alert("최종 합격 문자가 발송되었습니다.");
+  // 4. 모달에서 [전송하기] 클릭 시
+  const handleConfirmSend = async () => {
+    try {
+      if (modalConfig.type === 'DOC') {
+        // 1. 서류 합격 문자 발송 API 호출
+        await sendDocumentMessage();
+        
+        console.log("📨 서류 결과 문자 발송 완료");
+        alert("서류 전형 결과 문자가 발송되었습니다.");
+      } 
+      else if (modalConfig.type === 'FINAL') {
+        // 2. 최종 합격 문자 발송 API 호출
+        await sendFinalMessage();
+        console.log("📨 최종 합격 문자 발송 완료");
+        alert("최종 합격 문자가 발송되었습니다.");
+      }
+    } catch (error) {
+      console.error("문자 발송 실패:", error);
+      alert("문자 발송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+    } finally {
+      // 성공하든 실패하든 모달 닫기
+      closeModal();
     }
-    closeModal();
   };
-
   return (
     <div className="w-full min-h-screen bg-bg-dark">
       <DashboardHeader />
