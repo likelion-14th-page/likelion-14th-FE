@@ -59,7 +59,7 @@ const Navbar = () => {
       <div className="hidden min-[1024px]:flex justify-between items-center">
         <div className="flex">
           <NavItem label="모집 안내" path="/recruiting" />
-          <NavItem label="지난 활동" path="/archaive" />
+          <NavItem label="지난 활동" path="/archive" />
           <NavItem label="행사 일정" path="/events" />
           <NavItem label="FAQ" path="/faq" />
         </div>
@@ -78,7 +78,7 @@ const Navbar = () => {
       >
         <div className="flex flex-col items-center justify-center h-full space-y-2">
           <NavItem label="모집 안내" path="/recruiting" mobile />
-          <NavItem label="지난 활동" path="/archaive" mobile />
+          <NavItem label="지난 활동" path="/archive" mobile />
           <NavItem label="행사 일정" path="/events" mobile />
           <NavItem label="FAQ" path="/faq" mobile />
           <div className="pt-10">
