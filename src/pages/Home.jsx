@@ -24,14 +24,14 @@ const Home = () => {
           <div className="relative z-10  flex flex-col items-start sm:items-center md:items-start">
             <div className="gap-[12px] flex sm:items-center items-start justify-start mb-[24px] sm:justify-center md:justify-start w-full">
               <img src={hongik} alt="logo" className="sm:w-[43px] w-[23px]" />
-              <div className="sm:title-32-semibold title-18-semibold text-white">
+              <div className="sm:title-32-semibold title-32-semibold text-white">
                 홍익대학교
               </div>
             </div>
-            <div className="md:title-80-semibold sm:title-64-bold title-48-semibold text-white text-left sm:text-center md:text-left">
+            <div className="md:title-80-semibold sm:title-64-bold title-80-semibold text-white text-left sm:text-center md:text-left">
               멋쟁이사자처럼
             </div>
-            <div className="md:title-28-semibold title-20-semibold text-gray-02 mt-[16px] mb-[96px] text-left sm:text-center md:text-left break-keep">
+            <div className="md:title-28-semibold title-24-semibold text-gray-02 mt-[16px] mb-[96px] text-left sm:text-center md:text-left break-keep">
               국내 최대 규모의 IT 창업 연합 동아리
             </div>
             <ButtonApply type="long_title" className={'hidden sm:block'} />
