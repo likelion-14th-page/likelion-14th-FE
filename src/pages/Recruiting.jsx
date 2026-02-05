@@ -9,7 +9,7 @@ const Recruiting = () => {
         <div className="title-20-bold text-white">모집 대상</div>
         <div className="body-18-regular text-gray-02">
           홍익대학교 재학생, 휴학생, 졸업유예생 (단, 반드시 1년간 활동이
-          가능해야합니다.)
+          가능해야 합니다.)
         </div>
       </div>
 
@@ -35,7 +35,7 @@ const Recruiting = () => {
           <EventCard title="서류 접수" date="2월 16일 - 26일" />
           <EventCard title="서류 합격 발표" date="3월 1일" />
           <EventCard
-            title="면접 진행"
+            title="면접"
             date="3월 3일 - 5일"
             description="*면접은 대면으로 진행됩니다"
           />
