@@ -29,7 +29,7 @@ const Home = () => {
               </div>
             </div>
             <div className="md:title-80-semibold sm:title-64-bold title-48-semibold text-white text-left sm:text-center md:text-left">
-              멋쟁이 사자처럼
+              멋쟁이사자처럼
             </div>
             <div className="md:title-28-semibold title-20-semibold text-gray-02 mt-[16px] mb-[96px] text-left sm:text-center md:text-left break-keep">
               국내 최대 규모의 IT 창업 연합 동아리
@@ -56,7 +56,7 @@ const Home = () => {
 
           <div className="flex flex-col sm:flex-row gap-[20px] justify-center items-center mb-[80px]">
             <SeeMore text="모집 안내 사항 바로가기" navi={'/recruiting'} />
-            <SeeMore text="지난 기수 프로젝트 바로가기" />
+            <SeeMore text="지난 기수 프로젝트 바로가기" navi={'/archive'} />
           </div>
         </div>
       </section>
