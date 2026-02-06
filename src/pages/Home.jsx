@@ -1,19 +1,19 @@
 import lion from '../assets/home/logo-lion.png';
 import hongik from '../assets/home/logo-hongik.svg';
-import Navbar from '../layout/Navbar';
 import ButtonApply from '../layout/ButtonApply';
 import Introduction from '../components/home/Introduction';
 import KeyComp from '../components/home/KeyComp';
 import Track from '../components/home/Track';
 import SeeMore from '../components/home/SeeMore';
 import Footer from '../layout/Footer';
+import Navbar from '../layout/NavBar';
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-bg-dark">
+    <div className="relative min-h-screen bg-bg-dark">
       {/* 1. 전체 배경색만 담당 */}
       {/* 2. 네브바 (화면 상단 고정) */}
-      <div className="absolute top-0 left-0 w-full z-50 bg-bg-dark">
+      <div className="fixed top-0 left-0 w-full z-50 bg-bg-dark">
         <Navbar />
       </div>
       {/* 3. 메인 히어로 섹션 */}
