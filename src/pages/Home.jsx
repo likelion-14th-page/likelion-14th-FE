@@ -10,7 +10,7 @@ import Navbar from '../layout/NavBar';
 
 const Home = () => {
   return (
-    <div className="relative min-h-screen bg-bg-dark">
+    <div className="relative min-h-screen bg-bg-dark reposive-layout">
       {/* 1. 전체 배경색만 담당 */}
       {/* 2. 네브바 (화면 상단 고정) */}
       <div className="fixed top-0 left-0 w-full z-50 bg-bg-dark">
