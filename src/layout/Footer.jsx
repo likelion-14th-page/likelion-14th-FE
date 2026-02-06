@@ -3,7 +3,7 @@ import Manager from '../components/home/Manager';
 const Footer = ({ home = false }) => {
   return home === true ? (
     /* ✅ 1. 최상위 부모: 절대 화면 너비를 넘지 못하게 고정 */
-    <footer className="w-full bg-bg-secondary pt-[92px] pb-[141px] overflow-hidden">
+    <footer className="w-full bg-bg-secondary sm:pt-[88px] pt-[54px] pb-[141px] overflow-hidden">
       {/* ✅ 2. 스크롤 컨테이너: 
           - responsive-layout의 너비를 유지하면서 컨텐츠가 넘치면 스크롤 발생
           - scrollbar-hide를 통해 시각적으로 깔끔하게 유지
@@ -43,4 +43,3 @@ const Footer = ({ home = false }) => {
 };
 
 export default Footer;
-  
