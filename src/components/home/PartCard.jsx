@@ -26,19 +26,18 @@ const PartCard = ({ track }) => {
             <img
               alt="트랙 아이콘"
               src={track.imgSrc}
-              className="w-[54px] md:w-[64px] lg:w-[120px] h-auto object-contain"
+              className="w-[54px] md:w-[64px] lg:w-[160px] h-auto object-contain"
             />
           </div>
-
-          {/* 화살표 (모바일 & 데스크탑 그리드일 때만 여기서 렌더링) */}
+          {/* 화살표 (모바일 & 데스크탑 그리드일 때만 여기서 렌더링)
           <div className="sm:hidden lg:block shrink-0">
             <ArrowIcon track={track} />
-          </div>
+          </div> */}
         </div>
 
         {/* 텍스트 영역: 제목과 설명 */}
         <div className="flex flex-col gap-[8px] md:gap-[16px] flex-1">
-          <div className="title-18-bold md:title-24-semibold lg:title-20-bold text-[#080300] break-keep">
+          <div className="text-[18px] font-bold md:text-[24px] md:font-semibold lg:text-[20px] lg:font-bold text-[#080300] break-keep">
             {track.title}
           </div>
           <div className="font-regular text-[14px] md:font-medium md:text-[16px] text-gray-07 whitespace-pre-line break-keep leading-snug">
