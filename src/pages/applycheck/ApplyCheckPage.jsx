@@ -114,9 +114,6 @@ const ApplyCheckPage = () => {
 
   return (
     <div className="relative w-full min-h-screen bg-bg-dark overflow-x-hidden">
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Navbar />
-      </div>
 
       {step === 'input' && (
         <div className="fixed inset-0 w-full h-full z-0 pointer-events-none flex items-center justify-center">
@@ -130,7 +127,7 @@ const ApplyCheckPage = () => {
         </div>
       )}
 
-      <div className={`relative z-10 w-full min-h-screen flex flex-col ${(step === 'input' || step === 'loading') ? 'justify-center items-center' : 'pt-[120px] px-6 lg:px-[120px]'}`}>
+      <div className={`relative z-10 w-full min-h-screen flex flex-col ${(step === 'input' || step === 'loading') ? 'justify-center items-center' : 'pt-[120px] '}`}>
         
         {step === 'input' && (
           <CheckForm 

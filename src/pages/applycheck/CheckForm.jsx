@@ -32,10 +32,10 @@ const CheckForm = ({ name, setName, num, setNum, onCheck, isError, setIsError })
   return (
     <div className="w-full flex flex-col gap-6 px-4 items-center">
       {/* 안내 문구 */}
-      <div className="text-center mb-20">
+      <div className="text-center mb-11 sm:mb-20">
         <h2 className="
             text-[32px] font-semibold leading-tight  {/* 모바일 기본 (32px) */}
-            sm:text-[48px]                           {/* PC (md) 이상에서 48px로 덮어쓰기 */}
+            sm:text-[48px] font-bold                 {/* PC (md) 이상에서 48px로 덮어쓰기 */}
             text-white mb-2
         ">
           홍익대 멋사 14기<br/>지원결과 조회
