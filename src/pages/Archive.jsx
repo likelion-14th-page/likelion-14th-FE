@@ -90,11 +90,10 @@ const Archive = () => {
                                     cursor-pointer
                                     flex justify-center items-center
                                     px-2 py-2 md:px-4 md:py-3
-                                    text-base md:body-18-regular
                                     transition-all
                                     ${selectedFilter === filter
-                                        ? 'text-white rounded-[8px] border-b border-[#DABE5A]'
-                                        : 'text-gray-02'
+                                        ? 'body-18-bold text-white rounded-[8px] border-b border-[#DABE5A]'
+                                        : 'text-base md:body-18-regular text-gray-02 hover:body-18-bold hover:text-white'
                                     }
                                 `}
                             >
