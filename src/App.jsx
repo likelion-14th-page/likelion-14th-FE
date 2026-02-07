@@ -13,6 +13,8 @@ import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import PrivateRoute from './components/admin/PrivateRoute';
 import AdminFinalPage from './pages/admin/AdminFinalPage';
 
+import Uitest from './pages/UItest';
+
 function App() {
   return (
     <Router>
@@ -24,6 +26,8 @@ function App() {
           <Route path="/archive" element={<Archive />} />
           <Route path="/recruiting" element={<Recruiting />} />
           <Route path="/apply-end" element={<ApplyEnd />} />
+          <Route path="/uitest" element={<Uitest/>}/>
+
           <Route path="/faq" element={<FAQ />} />
         </Route>
 
