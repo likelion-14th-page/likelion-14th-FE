@@ -81,7 +81,7 @@ const Archive = () => {
             <div className="flex justify-center w-full">
                 <div className="w-full max-w-[1120px] flex flex-col">
                     {/* 필터바 */}
-                    <div className="flex justify-start items-center gap-1 md:gap-[10px] mb-8 flex-wrap">
+                    <div className="flex justify-start items-center gap-4 sm:gap-6 md:gap-[10px] mb-8 flex-wrap">
                         {filters.map((filter) => (
                             <button
                                 key={filter}
