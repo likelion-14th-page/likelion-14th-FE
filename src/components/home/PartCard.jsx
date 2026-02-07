@@ -15,7 +15,7 @@ const PartCard = ({ track }) => {
             <img
               alt="트랙 아이콘"
               src={track.imgSrc}
-              className="w-[54px] md:w-[160px] aspect-square object-contain shrink-0"
+              className="w-[54px] aspect-square md:w-[160px] md:h-[160px] object-contain shrink-0"
             />
           </div>
         </div>
