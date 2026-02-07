@@ -25,7 +25,7 @@ const PassResult = ({ name, info }) => {
 
       {/* Part 2. 합격 메시지 */}
       <div className="body-16-regular text-gray-03 mb-8 leading-relaxed whitespace-pre-wrap">
-        먼저 귀한 시간을 할애하여 멋쟁이 사자처럼 14기 선발에 지원해 주셔서 진심으로 감사드립니다.<br/><br/>
+        먼저 귀한 시간을 할애하여 멋쟁이사자처럼 14기 선발에 지원해 주셔서 진심으로 감사드립니다.<br/><br/>
         홍익대학교 멋쟁이사자처럼 14기 1차 서류 합격을 진심으로 축하드리며<br/>
         <span >{firstName}</span> 님의 빛나는 가능성을 직접 마주할 시간을 설레는 마음으로 기다리겠습니다.<br/>
         <br/>
