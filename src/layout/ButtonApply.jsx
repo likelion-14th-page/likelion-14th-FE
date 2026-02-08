@@ -33,7 +33,7 @@ const ButtonApply = ({ type, className, onClick }) => {
   const handleApply = () => {
     // 1. 기간 전
     if (isBefore) {
-      alert('아직 지원 기간이 아닙니다.\n지원 기간: 2월 16일 ~ 2월 26일');
+      alert('아직 지원 기간이 아닙니다.\n지원 기간: 2월 12일 ~ 2월 26일');
       return;
     }
 
