@@ -12,7 +12,6 @@ import AdminLoginPage from './pages/admin/AdminLoginPage';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import PrivateRoute from './components/admin/PrivateRoute';
 import AdminFinalPage from './pages/admin/AdminFinalPage';
-import FinalTest from './pages/FinalTest';
 
 function App() {
   return (
@@ -26,7 +25,6 @@ function App() {
           <Route path="/recruiting" element={<Recruiting />} />
           <Route path="/apply-end" element={<ApplyEnd />} />
           <Route path="/apply-check" element={<ApplyCheckPage />} />
-          <Route path="/final-test" element={<FinalTest />} />
           <Route path="/faq" element={<FAQ />} />
         </Route>
 
