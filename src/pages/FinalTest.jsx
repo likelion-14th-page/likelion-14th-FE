@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import HomeIcon from '../../assets/apply/icon-home.svg';
+import HomeIcon from '../assets/apply/icon-home.svg';
 
-const FinalPassResult = ({ name }) => {
+const FinalTest = () => {
   const navigate = useNavigate();
+  const name = "고다현"; // 예시 이름, 실제로는 API에서 받아와야 함
   const firstName = name && name.length >= 3 ? name.slice(1) : name;
+
 
   return (
     <div className="w-full flex flex-col items-start ">
@@ -36,6 +38,7 @@ const FinalPassResult = ({ name }) => {
         “최종 합격자”는 반드시 오늘 6시까지 010-3120-2936으로 확인 여부 회신 부탁드립니다.<br/>
         Ex. 000, 확인했습니다. (회신이 없을 시 최종 합격이 취소될 수 있습니다.)<br/>
       </div>
+
 
       {/* 하단 (추가 문의 & 홈 버튼) */}
       <div className="w-full flex justify-between items-end mb-10">
@@ -71,4 +74,4 @@ const FinalPassResult = ({ name }) => {
   );
 };
 
-export default FinalPassResult; 
+export default FinalTest; 
