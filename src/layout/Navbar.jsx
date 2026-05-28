@@ -23,7 +23,10 @@ const Navbar = () => {
 
     return (
       <div
-        onClick={() => navigate(path)}
+        onClick={() => {
+          navigate(path);
+          window.scrollTo(0, 0);
+        }}
         className="relative mx-0 px-[24px] py-[16px] cursor-pointer group flex items-center justify-center"
       >
         {/* 1. 배경 그라데이션: 현재 페이지(isActive)면 opacity-100, 아니면 호버 시에만 나타남 */}
@@ -38,7 +41,7 @@ const Navbar = () => {
         {/* 2. 텍스트 레이어: 현재 페이지면 흰색과 굵은 글씨로 강조 */}
         <span
           className={`
-            relative z-10 navbar_explanation transition-colors duration-300
+            relative z-10 title-20-semibold transition-colors duration-300
           `}
         >
           {label}
@@ -50,8 +53,11 @@ const Navbar = () => {
   return (
     <div className="responsive-layout flex items-center justify-between my-[8px] py-[8px]">
       <div
-        onClick={() => navigate('/')}
-        className=" py-[16px] cursor-pointer navbar_title z-[60] transition-colors duration-300 hover:text-gray-02"
+        onClick={() => {
+          navigate('/');
+          window.scrollTo(0, 0);
+        }}
+        className=" py-[16px] cursor-pointer title-20-semibold text-white z-[60] transition-colors duration-300 hover:text-gray-02"
       >
         LIKELION HONGIK
       </div>
@@ -73,7 +79,7 @@ const Navbar = () => {
         src={menu}
       />
       <div
-        className={`fixed inset-0 bg-bg-dark/80 z-50 transition-transform duration-300 min-[1024px]:hidden
+        className={`fixed inset-0 bg-bg-dark/85 z-50 min-[1024px]:hidden
           ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex flex-col items-center justify-center h-full space-y-2">

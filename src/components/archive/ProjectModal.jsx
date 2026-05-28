@@ -12,10 +12,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
     const images = project?.images || [];
     const totalImages = images.length;
 
-    const IMAGE_WIDTH = 467;
-    const IMAGE_HEIGHT = 267;
     const IMAGE_GAP = 1;
-    const totalWidth = (IMAGE_WIDTH + IMAGE_GAP) * totalImages - IMAGE_GAP;
 
     // 슬라이더 위치 계산
     const handleSliderInteraction = useCallback((clientX) => {
@@ -26,12 +23,13 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
         const percentage = Math.max(0, Math.min(1, x / rect.width));
 
         const containerWidth = imagesContainerRef.current.offsetWidth;
-        const maxScroll = Math.max(totalWidth - containerWidth, 0);
+        const scrollWidth = imagesContainerRef.current.scrollWidth;
+        const maxScroll = Math.max(scrollWidth - containerWidth, 0);
         const newScroll = percentage * maxScroll;
 
         setScrollPosition(newScroll);
         imagesContainerRef.current.scrollLeft = newScroll;
-    }, [totalWidth]);
+    }, []);
 
     // 스크롤 이벤트 핸들러
     const handleScroll = () => {
@@ -95,7 +93,8 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
 
     // 손잡이 위치 계산 (%)
     const containerWidth = imagesContainerRef.current?.offsetWidth || 800;
-    const maxScroll = Math.max(totalWidth - containerWidth, 1);
+    const scrollWidth = imagesContainerRef.current?.scrollWidth || 800;
+    const maxScroll = Math.max(scrollWidth - containerWidth, 1);
     const handlePosition = (scrollPosition / maxScroll) * 100;
 
     return (
@@ -105,11 +104,11 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
         >
             {/* 모달 컨테이너 */}
             <div
-                className="relative w-full max-w-[657px] rounded-[11px] border border-[#515154] bg-[#2D2D2D] overflow-hidden"
+                className="relative w-full max-h-[98vh] max-w-[800px] rounded-[11px] border border-[#515154] bg-[#2D2D2D] overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* 상단 컨텐츠 영역 */}
-                <div className="p-6 md:p-8 pb-4">
+                <div className="px-6 pt-4 pb-0 md:px-8 md:pt-8">
                     {/* 닫기 버튼 */}
                     <button
                         onClick={onClose}
@@ -119,22 +118,22 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                     </button>
 
                     {/* 카테고리 */}
-                    <p className="body-14-regular text-gray-02">
+                    <p className="body-14-regular text-gray-02 ml-2 md:ml-4">
                         {project.category}
                     </p>
 
                     {/* 서비스 이름 */}
-                    <h2 className="title-32-semibold text-white mt-2">
+                    <h2 className="title-32-semibold text-white mt-2 ml-2 md:ml-4">
                         {project.title}
                     </h2>
 
                     {/* 서비스 설명 */}
-                    <p className="body-16-regular text-gray-02 mt-3 max-w-[90%]">
+                    <p className="body-16-regular text-gray-02 mt-3 ml-2 md:ml-4 max-w-[90%]">
                         {project.subtitle}
                     </p>
 
                     {/* 팀원 정보 */}
-                    <div className="mt-6 md:mt-8 ml-0 md:ml-[370px] flex flex-col gap-3">
+                    <div className="mt-6 md:mt-8 ml-2 md:ml-[500px] flex flex-col gap-3">
                         {/* 기획/디자인 */}
                         <div className="flex items-center">
                             <span className="body-14-semibold text-gray-04 w-[85px]">기획/디자인</span>
@@ -161,7 +160,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                     </div>
 
                     {/* 슬라이더 바 */}
-                    <div className="mt-6 w-full">
+                    <div className="mt-4 w-[95%] mx-auto">
                         <div
                             ref={sliderRef}
                             className="relative h-0.5 bg-[#515154] rounded-full cursor-pointer"
@@ -193,9 +192,9 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                 {/* 이미지 갤러리 */}
                 <div
                     ref={imagesContainerRef}
-                    className="w-full overflow-x-auto"
+                    className="w-full overflow-x-auto mt-3"
                     style={{
-                        height: 'clamp(150px, 40vw, 267px)',
+                        height: 'clamp(200px, 50vw, 400px)',
                         scrollbarWidth: 'none',
                         msOverflowStyle: 'none',
                     }}
@@ -207,8 +206,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                                 key={index}
                                 src={src}
                                 alt={`${project.title} - ${index + 1}`}
-                                className="flex-shrink-0 object-cover h-full"
-                                style={{ aspectRatio: '467/267' }}
+                                className="flex-shrink-0 h-full w-auto"
                                 draggable={false}
                             />
                         ))}

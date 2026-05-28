@@ -20,8 +20,6 @@ import hackathon_c5 from '../assets/archive/hackathon/c5.png';
 import hackathon_c6 from '../assets/archive/hackathon/c6.png';
 import hackathon_c7 from '../assets/archive/hackathon/c7.png';
 import hackathon_c8 from '../assets/archive/hackathon/c8.png';
-import hackathon_c9 from '../assets/archive/hackathon/c9.png';
-import hackathon_c10 from '../assets/archive/hackathon/c10.png';
 
 import hackathon_d1 from '../assets/archive/hackathon/d1.jpg';
 import hackathon_d2 from '../assets/archive/hackathon/d2.jpg';
@@ -36,6 +34,8 @@ import hackathon_e3 from '../assets/archive/hackathon/e3.png';
 import hackathon_e4 from '../assets/archive/hackathon/e4.png';
 import hackathon_e5 from '../assets/archive/hackathon/e5.png';
 import hackathon_e6 from '../assets/archive/hackathon/e6.png';
+import hackathon_e7 from '../assets/archive/hackathon/e7.png';
+import hackathon_e8 from '../assets/archive/hackathon/e8.png';
 
 import hackathon_f1 from '../assets/archive/hackathon/f1.png';
 import hackathon_f2 from '../assets/archive/hackathon/f2.png';
@@ -64,6 +64,12 @@ import demoday_b6 from '../assets/archive/demoday/b6.png';
 import demoday_b7 from '../assets/archive/demoday/b7.png';
 import demoday_b8 from '../assets/archive/demoday/b8.png';
 import demoday_b9 from '../assets/archive/demoday/b9.png';
+import demoday_b10 from '../assets/archive/demoday/b10.png';
+import demoday_b11 from '../assets/archive/demoday/b11.png';
+import demoday_b12 from '../assets/archive/demoday/b12.png';
+import demoday_b13 from '../assets/archive/demoday/b13.png';
+import demoday_b14 from '../assets/archive/demoday/b14.png';
+import demoday_b15 from '../assets/archive/demoday/b15.png';
 
 import demoday_c1 from '../assets/archive/demoday/c1.png';
 import demoday_c2 from '../assets/archive/demoday/c2.png';
@@ -86,6 +92,12 @@ import demoday_d9 from '../assets/archive/demoday/d9.png';
 import demoday_d10 from '../assets/archive/demoday/d10.png';
 import demoday_d11 from '../assets/archive/demoday/d11.png';
 import demoday_d12 from '../assets/archive/demoday/d12.png';
+import demoday_d13 from '../assets/archive/demoday/d13.png';
+import demoday_d14 from '../assets/archive/demoday/d14.png';
+import demoday_d15 from '../assets/archive/demoday/d15.png';
+import demoday_d16 from '../assets/archive/demoday/d16.png';
+import demoday_d17 from '../assets/archive/demoday/d17.png';
+import demoday_d18 from '../assets/archive/demoday/d18.png';
 
 import demoday_e1 from '../assets/archive/demoday/e1.jpg';
 import demoday_e2 from '../assets/archive/demoday/e2.jpg';
@@ -199,8 +211,6 @@ export const projects = [
       hackathon_c6,
       hackathon_c7,
       hackathon_c8,
-      hackathon_c9,
-      hackathon_c10,
     ],
     category: '해커톤',
     title: '아끼미',
@@ -237,6 +247,8 @@ export const projects = [
       hackathon_e4,
       hackathon_e5,
       hackathon_e6,
+      hackathon_e7,
+      hackathon_e8,
     ],
     category: '해커톤',
     title: 'MAPOOP',
@@ -297,11 +309,17 @@ export const projects = [
       demoday_b7,
       demoday_b8,
       demoday_b9,
+      demoday_b10,
+      demoday_b11,
+      demoday_b12,
+      demoday_b13,
+      demoday_b14,
+      demoday_b15,
     ],
     category: '데모데이',
     title: '땅땅땅',
     subtitle:
-      'AI 판사의 판결을 중심으로, 사용자가 변호사나 배심원이 되어 논리로 대결하는 재판 구조 기반의 밸런스 게임 플랫폼',
+      'AI 판사의 판결을 중심으로, 사용자가 변호사나 배심원이 되어 논리로 대결하는 재판 구조 기반 밸런스 게임 플랫폼',
     designer: '강채원',
     frontend: '박채아 이승찬 이정인',
     backend: '최우혁 황신애',
@@ -340,6 +358,12 @@ export const projects = [
       demoday_d10,
       demoday_d11,
       demoday_d12,
+      demoday_d13,
+      demoday_d14,
+      demoday_d15,
+      demoday_d16,
+      demoday_d17,
+      demoday_d18,
     ],
     category: '데모데이',
     title: '또박이',

@@ -81,7 +81,7 @@ const Archive = () => {
             <div className="flex justify-center w-full">
                 <div className="w-full max-w-[1120px] flex flex-col">
                     {/* 필터바 */}
-                    <div className="flex justify-start items-center gap-1 md:gap-[10px] mb-8 flex-wrap">
+                    <div className="flex justify-start items-center gap-4 sm:gap-6 md:gap-[10px] mb-8 flex-wrap">
                         {filters.map((filter) => (
                             <button
                                 key={filter}
@@ -90,11 +90,10 @@ const Archive = () => {
                                     cursor-pointer
                                     flex justify-center items-center
                                     px-2 py-2 md:px-4 md:py-3
-                                    text-base md:body-18-regular
                                     transition-all
                                     ${selectedFilter === filter
-                                        ? 'text-white rounded-[8px] border-b border-[#DABE5A]'
-                                        : 'text-gray-02'
+                                        ? 'body-18-bold text-white rounded-[8px] border-b border-[#DABE5A]'
+                                        : 'text-base md:body-18-regular text-gray-02 hover:body-18-bold hover:text-white'
                                     }
                                 `}
                             >
@@ -103,14 +102,14 @@ const Archive = () => {
                         ))}
                     </div>
 
-                    <h2 className="mt-[64px] title-20-bold text-white">
+                    <h2 className="mt-[30px] title-20-bold text-white">
                         프로젝트
                     </h2>
 
                     {/* 프로젝트 카드 목록 */}
                     <div
                         ref={cardsContainerRef}
-                        className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[20px] gap-y-[24px]"
+                        className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[20px] gap-y-[24px]"
                     >
                         {currentProjects.map((project, index) => (
                             <ProjectCard

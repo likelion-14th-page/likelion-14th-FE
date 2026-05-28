@@ -98,28 +98,6 @@
 }
 
 @layer components {
-  .navbar_title {
-    color: var(--Gray-white, #fff);
-
-    /* Title/20_Semibold */
-    font-family: 'Pretendard';
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 130%; /* 26px */
-  }
-  .navbar_explanation {
-    color: var(--Gray-01, #ededed);
-    text-align: center;
-
-    /* Title/20_Semibold */
-    font-family: 'Pretendard';
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 130%; /* 26px */
-  }
-
   /* .button_layout {
     border-radius: 100px;
     border: 1.5px solid var(--or-orange-02, #804229);
@@ -172,6 +150,7 @@
     .responsive-layout {
       /* 1024px에서 100px, 1439px에서 120px이 되도록 유동적 계산 
          계산식: 약 4.8vw + 50px */
+      max-width: 1200;
       padding-left: clamp(100px, 4.8vw + 50px, 120px);
       padding-right: clamp(100px, 4.8vw + 50px, 120px);
     }
@@ -194,8 +173,16 @@
     @apply text-[120px] font-bold leading-[120%];
   }
 
+  .title-100-semibold {
+    @apply text-[100px] font-semibold leading-[120%];
+  }
+
   .title-64-bold {
     @apply text-[64px] font-bold leading-[120%];
+  }
+
+  .title-48-bold {
+    @apply text-[48px] font-bold leading-[120%];
   }
 
   .title-80-semibold {
@@ -228,6 +215,10 @@
 
   .title-18-bold {
     @apply text-[18px] font-bold leading-[130%];
+  }
+
+  .title-18-semibold {
+    @apply text-[18px] font-semibold leading-[130%];
   }
 
   /* Body Styles */
@@ -263,6 +254,9 @@
     @apply text-[14px] font-semibold leading-[150%];
   }
 
+  .body-12-semibold{
+    @apply text-[12px] font-semibold leading-[150%]
+  }
   /* Detail Styles */
   .detail-12-regular {
     @apply text-[12px] font-regular leading-[150%];
